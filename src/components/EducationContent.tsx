@@ -19,9 +19,9 @@ const EducationContent = () => {
       {educations.map((edu, index) => (
         <div key={index}>
           <h3 className="text-lg font-bold text-white">{edu.title}</h3>
-          <div className="flex justify-between align-middle">
-            <p className="text-sm italic">{edu.institution}</p>
-            <p className="text-sm text-gray-400 mb-1">{edu.date}</p>
+          <div className="flex flex-wrap justify-between">
+            <p className="text-sm italic flex-1 min-w-0">{edu.institution}</p>
+            <p className="text-sm text-gray-400 shrink-0 ml-2">{edu.date}</p>
           </div>
           {edu.description && (
             <p className="text-sm text-gray-200">{edu.description}</p>

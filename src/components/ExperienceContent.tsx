@@ -43,9 +43,9 @@ const ExperienceContent = () => {
       {experiences.map((exp, index) => (
         <div key={index}>
           <h3 className="text-lg font-bold text-white">{exp.title}</h3>
-          <div className="flex justify-between align-middle">
-            <p className="text-sm italic">{exp.company}</p>
-            <p className="text-sm text-gray-400 mb-2">{exp.date}</p>
+          <div className="flex flex-wrap justify-between">
+            <p className="text-sm italic flex-1 min-w-0">{exp.company}</p>
+            <p className="text-sm text-gray-400 shrink-0 ml-2">{exp.date}</p>
           </div>
           {exp.highlight && (
             <p
