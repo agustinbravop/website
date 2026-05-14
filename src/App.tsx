@@ -1,19 +1,23 @@
-import { useRef, useState, useLayoutEffect } from "react";
+import { useRef } from "react";
 import Scene from "./components/Scene";
 import Panel from "./components/Panel";
+import MobileAccordion from "./components/MobileAccordion";
 import PortfolioModal from "./components/PortfolioModal";
 import { useAppContext } from "./context/AppContext";
+import { useWindowSize } from "./hooks/useWindowSize";
+
+const PANEL_ORDER = ["about", "skills", "experience", "education", "buttons"];
 
 function App() {
   const { state } = useAppContext();
   const headerRef = useRef<HTMLDivElement>(null);
-  const [headerHeight, setHeaderHeight] = useState(0);
+  const [windowWidth] = useWindowSize();
 
-  useLayoutEffect(() => {
-    if (headerRef.current) {
-      setHeaderHeight(headerRef.current.clientHeight);
-    }
-  }, []);
+  const isMobile = windowWidth < 768;
+
+  const orderedNodes = PANEL_ORDER.map((id) =>
+    state.nodes.find((node) => node.id === id),
+  ).filter(Boolean);
 
   return (
     <div className="h-screen w-screen bg-[#1a1a1a] text-white font-sans overflow-hidden">
@@ -21,16 +25,16 @@ function App() {
 
       <header
         ref={headerRef}
-        className="absolute top-0 left-0 right-0 p-4 bg-transparent z-20 flex justify-between items-center"
+        className="absolute top-0 left-0 right-0 p-4 backdrop-blur-sm z-20 flex justify-between items-center"
       >
         <div className="flex items-baseline gap-3">
-          <p className="text-sm text-gray-400">Software Engineer</p>
+          <p className="text-gray-400 hidden sm:inline">Software Engineer</p>
           <h1 className="text-xl font-bold">Agustín Bravo</h1>
         </div>
-        <div className="flex gap-4 text-sm">
+        <div className="flex gap-4 pt-1">
           <a
             href="mailto:agustinbravop1@gmail.com"
-            className="text-gray-400 hover:text-white"
+            className="text-gray-400 hover:text-white hover:underline underline-offset-4"
           >
             Email
           </a>
@@ -38,7 +42,7 @@ function App() {
             href="https://www.linkedin.com/in/agustinbravop"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-gray-400 hover:text-white"
+            className="text-gray-400 hover:text-white hover:underline underline-offset-4"
           >
             LinkedIn
           </a>
@@ -46,7 +50,7 @@ function App() {
             href="https://github.com/agustinbravop"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-gray-400 hover:text-white"
+            className="text-gray-400 hover:text-white hover:underline underline-offset-4"
           >
             GitHub
           </a>
@@ -54,7 +58,7 @@ function App() {
             href="https://www.x.com/agustinbravop"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-gray-400 hover:text-white"
+            className="text-gray-400 hover:text-white hover:underline underline-offset-4"
           >
             Twitter
           </a>
@@ -62,18 +66,30 @@ function App() {
       </header>
 
       <main className="relative w-full h-full z-10">
-        {state.nodes.map((node) => (
-          <Panel
-            key={node.id}
-            id={node.id}
-            label={node.data.label}
-            content={node.data.content}
-            initialPosition={node.position}
-            width={node.data.width}
-            zIndex={node.zIndex}
-            headerHeight={headerHeight}
-          />
-        ))}
+        {isMobile ? (
+          <div className="w-full h-full overflow-y-auto px-4 py-20">
+            <MobileAccordion
+              items={orderedNodes.map((node) => ({
+                id: node!.id,
+                label: node!.data.label,
+                content: node!.data.content,
+              }))}
+            />
+          </div>
+        ) : (
+          state.nodes.map((node) => (
+            <Panel
+              key={node.id}
+              id={node.id}
+              label={node.data.label}
+              content={node.data.content}
+              initialPosition={node.position}
+              width={node.data.width}
+              zIndex={node.zIndex}
+
+            />
+          ))
+        )}
       </main>
 
       <PortfolioModal />

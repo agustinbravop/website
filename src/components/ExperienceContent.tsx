@@ -1,3 +1,5 @@
+import * as React from "react";
+
 const experiences = [
   {
     title: "Engineering Intern",
@@ -25,6 +27,17 @@ const experiences = [
 ];
 
 const ExperienceContent = () => {
+  const [animateOnLoad, setAnimateOnLoad] = React.useState(false);
+
+  React.useEffect(() => {
+    const startTimer = setTimeout(() => setAnimateOnLoad(true), 800);
+    const stopTimer = setTimeout(() => setAnimateOnLoad(false), 1300);
+    return () => {
+      clearTimeout(startTimer);
+      clearTimeout(stopTimer);
+    };
+  }, []);
+
   return (
     <div className="flex flex-col gap-4">
       {experiences.map((exp, index) => (
@@ -35,7 +48,9 @@ const ExperienceContent = () => {
             <p className="text-sm text-gray-400 mb-2">{exp.date}</p>
           </div>
           {exp.highlight && (
-            <p className="bg-teal-500/25 highlight-card relative overflow-hidden border border-teal-500/50 px-1 py-0.5 text-gray-200 text-md">
+            <p
+              className={`bg-teal-500/25 highlight-card relative overflow-hidden border border-teal-500/50 px-1 py-0.5 text-gray-200 text-md ${animateOnLoad ? "animate-on-load" : ""}`}
+            >
               {exp.highlight}
             </p>
           )}

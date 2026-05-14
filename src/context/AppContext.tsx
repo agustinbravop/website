@@ -27,7 +27,7 @@ export interface NodeState {
 
 interface AppState {
   nodes: NodeState[];
-  highestZIndex: number;
+  isModalOpen: boolean;
 }
 
 type Action =
@@ -49,13 +49,12 @@ const appReducer = (state: AppState, action: Action): AppState => {
         ),
       };
     case "BRING_TO_FRONT": {
-      const newHighestZIndex = state.highestZIndex + 1;
+      const highestZIndex = Math.max(...state.nodes.map((node) => node.zIndex));
       return {
         ...state,
-        highestZIndex: newHighestZIndex,
         nodes: state.nodes.map((node) =>
           node.id === action.payload.id
-            ? { ...node, zIndex: newHighestZIndex }
+            ? { ...node, zIndex: highestZIndex + 1 }
             : node,
         ),
       };
@@ -65,72 +64,60 @@ const appReducer = (state: AppState, action: Action): AppState => {
   }
 };
 
-const aboutMeNode = {
-  id: "about",
-  position: { x: 30, y: 70 },
-  data: {
-    label: "About Me",
-    content: <AboutMeContent />,
-    width: 550,
-  },
-};
-
-const educationNode = {
-  id: "education",
-  position: { x: 30, y: 380 },
-  data: {
-    label: "Education",
-    width: 450,
-    content: <EducationContent />,
-  },
-};
-
-const skillsNode = {
-  id: "skills",
-  position: { x: 610, y: 70 },
-  data: {
-    label: "Skills",
-    width: 400,
-    content: <SkillsContent />,
-  },
-};
-
-const experienceNode = {
-  id: "experience",
-  position: { x: 1040, y: 70 },
-  data: {
-    label: "Experience",
-    width: 475,
-    content: <ExperienceContent />,
-  },
-};
-
-const buttonsNode = {
-  id: "buttons",
-  position: { x: 1240, y: 690 },
-  data: {
-    label: "",
-    width: 275,
-    content: <ButtonsContent />,
-  },
-};
-
-const initialNodes: NodeState[] = [
-  skillsNode,
-  buttonsNode,
-  educationNode,
-  experienceNode,
-  aboutMeNode,
-].map((node, index) => ({
-  id: node.id,
-  position: node.position,
-  zIndex: index + 1,
-  data: node.data,
-}));
-
 const initialState: AppState = {
-  nodes: initialNodes,
-  highestZIndex: initialNodes.length,
+  nodes: [
+    {
+      id: "about",
+      position: { x: -745, y: 70 },
+      data: {
+        label: "About Me",
+        content: <AboutMeContent />,
+        width: 550,
+      },
+      zIndex: 1,
+    },
+    {
+      id: "skills",
+      position: { x: -165, y: 70 },
+      data: {
+        label: "Skills",
+        content: <SkillsContent />,
+        width: 400,
+      },
+      zIndex: 1,
+    },
+    {
+      id: "experience",
+      position: { x: 265, y: 70 },
+      data: {
+        label: "Experience",
+        content: <ExperienceContent />,
+        width: 475,
+      },
+      zIndex: 1,
+    },
+    {
+      id: "education",
+      position: { x: -740, y: 355 },
+      data: {
+        label: "Education",
+        content: <EducationContent />,
+        width: 450,
+      },
+      zIndex: 1,
+    },
+    {
+      id: "buttons",
+      position: { x: 465, y: 680 },
+      data: {
+        label: "",
+        content: <ButtonsContent />,
+        width: 275,
+      },
+      zIndex: 1,
+    },
+  ],
+  isModalOpen: false,
 };
 
 interface AppContextType {

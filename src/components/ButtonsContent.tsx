@@ -23,7 +23,7 @@ const ButtonsContent = () => {
       </div> */}
       <div className="relative flex-1 rounded group">
         <div
-          className="absolute inset-0 rounded border border-white/20 group-hover:border-white/50 animate-[shimmer_5s_linear_infinite]"
+          className="absolute inset-0 rounded border border-white/70 group-hover:border-white/50 animate-[shimmer_5s_linear_infinite]"
           style={{
             background:
               "linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.5) 50%, transparent 100%)",
@@ -33,7 +33,7 @@ const ButtonsContent = () => {
         <a
           href="/AgustinBravo_Resume.pdf"
           download
-          className="relative block w-full py-2 px-4 bg-[#1C1C1C]/80 text-gray-300 hover:text-white font-medium text-md rounded transition-all text-center cursor-pointer border border-white/10 active:scale-[0.97] duration-75"
+          className="relative block w-full py-2 px-4 bg-[#1C1C1C]/80 text-gray-300 hover:text-white font-medium text-md rounded transition-all text-center cursor-pointer border border-white/60 active:scale-[0.97] duration-75"
         >
           <span className="inline-flex items-center justify-center gap-2">
             <svg

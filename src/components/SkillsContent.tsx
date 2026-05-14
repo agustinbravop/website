@@ -6,23 +6,25 @@ const skillIcons: Record<string, React.ReactNode> = {
   TypeScript: <StackIcon name="typescript" />,
   Go: <StackIcon name="go" />,
   Python: <StackIcon name="python" />,
+  Git: <StackIcon name="git" />,
+  PostgreSQL: <StackIcon name="postgresql" />,
+  Linux: <StackIcon name="linux" />,
   Docker: <StackIcon name="docker" />,
   Kubernetes: <StackIcon name="kubernetes" />,
-  Linux: <StackIcon name="linux" />,
   AWS: <StackIcon name="aws" variant="dark" />,
 };
 
 const SkillsContent = () => {
   return (
     <div>
-      <h3 className="text-sm text-white">
+      <h3 className="text-md text-white">
         I'm both a full stack engineer and a devops tryhard.
       </h3>
-      <div className="grid grid-cols-4 mt-3">
+      <div className="grid grid-cols-5 gap-y-4 mt-4">
         {Object.entries(skillIcons).map(([skill, icon]) => (
-          <div key={skill} className="flex flex-col items-center gap-2 py-2">
+          <div key={skill} className="flex flex-col items-center gap-1">
             <div className="w-10 h-10">{icon}</div>
-            <span className="text-gray-200 text-xs">{skill}</span>
+            <span className="text-gray-200 text-sm">{skill}</span>
           </div>
         ))}
       </div>
