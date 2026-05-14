@@ -31,7 +31,7 @@ const Panel: React.FC<PanelProps> = ({
   });
   const [isDragging, setIsDragging] = useState(false);
   const [isCollapsed, setIsCollapsed] = useState(false);
-  const [headerHeight, setHeaderHeight] = useState(0);
+  const [headerHeight, setHeaderHeight] = useState(50);
 
   useLayoutEffect(() => {
     if (panelRef.current) {
@@ -46,25 +46,25 @@ const Panel: React.FC<PanelProps> = ({
     }
   }, [panelRef]);
 
-  const centeredInitialPosition = {
-    x: initialPosition.x + windowWidth / 2,
-    y: initialPosition.y,
-  };
-
-  const clampedPosition = React.useMemo(() => {
-    const maxX = Math.max(0, windowWidth - panelDimensions.width);
-    const maxY = Math.max(0, windowHeight - panelDimensions.height);
+  const position = React.useMemo(() => {
+    const centeredInitialPosition = {
+      x: initialPosition.x + windowWidth / 2,
+      y: initialPosition.y,
+    };
+    const effectiveWidth = panelDimensions.width || width;
+    const maxX = Math.max(0, windowWidth - effectiveWidth);
+    const maxY = Math.max(0, windowHeight - 120);
     return {
       x: Math.min(Math.max(0, centeredInitialPosition.x), maxX),
       y: Math.min(Math.max(headerHeight, centeredInitialPosition.y), maxY),
     };
   }, [
-    centeredInitialPosition,
+    initialPosition,
     windowWidth,
     windowHeight,
     panelDimensions.width,
-    panelDimensions.height,
     headerHeight,
+    width,
   ]);
 
   const bringToFront = () => {
@@ -84,11 +84,12 @@ const Panel: React.FC<PanelProps> = ({
     setIsDragging(false);
   };
 
+  const effectiveWidth = panelDimensions.width || width;
   const dragConstraints = {
     left: 0,
-    right: windowWidth - panelDimensions.width / 1.5,
-    top: headerHeight,
-    bottom: windowHeight - panelDimensions.height / 3,
+    right: windowWidth - effectiveWidth / 1.5,
+    top: headerHeight + 10,
+    bottom: windowHeight - 120,
   };
 
   return (
@@ -103,8 +104,8 @@ const Panel: React.FC<PanelProps> = ({
       style={{
         zIndex,
         width: `${width}px`,
-        x: clampedPosition.x,
-        y: clampedPosition.y,
+        x: position.x,
+        y: position.y,
       }}
       className={`absolute bg-[#1C1C1C]/60 backdrop-blur-md border border-white/10 rounded-lg shadow-2xl text-gray-200 font-sans ${isDragging ? "select-none" : ""}`}
       whileHover={{

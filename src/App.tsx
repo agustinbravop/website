@@ -25,19 +25,13 @@ function App() {
 
       <header
         ref={headerRef}
-        className="absolute top-0 left-0 right-0 p-4 backdrop-blur-sm z-20 flex justify-between items-center"
+        className="absolute top-0 left-0 right-0 p-3 sm:p-4 backdrop-blur-sm z-20 flex justify-between items-center"
       >
         <div className="flex items-baseline gap-3">
           <p className="text-gray-400 hidden sm:inline">Software Engineer</p>
           <h1 className="text-xl font-bold">Agustín Bravo</h1>
         </div>
-        <div className="flex gap-4 pt-1">
-          <a
-            href="mailto:agustinbravop1@gmail.com"
-            className="text-gray-400 hover:text-white hover:underline underline-offset-4"
-          >
-            Email
-          </a>
+        <div className="flex gap-2 sm:gap-4 text-sm sm:text-base pt-1.5 sm:pt-1">
           <a
             href="https://www.linkedin.com/in/agustinbravop"
             target="_blank"
@@ -61,6 +55,12 @@ function App() {
             className="text-gray-400 hover:text-white hover:underline underline-offset-4"
           >
             Twitter
+          </a>
+          <a
+            href="mailto:agustinbravop1@gmail.com"
+            className="text-gray-400 hover:text-white hover:underline underline-offset-4"
+          >
+            Email
           </a>
         </div>
       </header>
@@ -86,7 +86,6 @@ function App() {
               initialPosition={node.position}
               width={node.data.width}
               zIndex={node.zIndex}
-
             />
           ))
         )}

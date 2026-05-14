@@ -114,7 +114,7 @@ const initialState: AppState = {
         content: <ButtonsContent />,
         width: 275,
       },
-      zIndex: 1,
+      zIndex: 2,
     },
   ],
   isModalOpen: false,

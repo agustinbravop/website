@@ -18,7 +18,7 @@ const SkillsContent = () => {
   return (
     <div>
       <h3 className="text-md text-white">
-        I'm both a full stack engineer and a devops tryhard.
+        A full stack engineer AND a devops tryhard.
       </h3>
       <div className="grid grid-cols-5 gap-y-4 mt-4">
         {Object.entries(skillIcons).map(([skill, icon]) => (
