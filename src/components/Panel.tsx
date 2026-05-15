@@ -95,6 +95,7 @@ const Panel: React.FC<PanelProps> = ({
   return (
     <motion.div
       ref={panelRef}
+      data-panel="true"
       drag
       dragListener={false}
       dragControls={dragControls}

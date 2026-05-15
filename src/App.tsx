@@ -1,5 +1,6 @@
 import { useRef } from "react";
 import Scene from "./components/Scene";
+import ArkanoidGame from "./components/ArkanoidGame";
 import Panel from "./components/Panel";
 import MobileAccordion from "./components/MobileAccordion";
 import PortfolioModal from "./components/PortfolioModal";
@@ -14,6 +15,7 @@ function App() {
   const [windowWidth] = useWindowSize();
 
   const isMobile = windowWidth < 768;
+  const isWideEnough = windowWidth >= 1024;
 
   const orderedNodes = PANEL_ORDER.map((id) =>
     state.nodes.find((node) => node.id === id),
@@ -22,6 +24,7 @@ function App() {
   return (
     <div className="h-screen w-screen bg-[#1a1a1a] text-white font-sans overflow-hidden">
       <Scene />
+      {isWideEnough && <ArkanoidGame />}
 
       <header
         ref={headerRef}
