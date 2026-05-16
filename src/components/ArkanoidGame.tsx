@@ -165,7 +165,7 @@ export default function ArkanoidGame() {
       ctx.fill();
       ctx.beginPath();
       ctx.arc(bx, by, BALL_RADIUS, 0, Math.PI * 2);
-      ctx.fillStyle = "rgba(255,255,255,0.85)";
+      ctx.fillStyle = "rgba(255,255,255,1)";
       ctx.fill();
     };
 

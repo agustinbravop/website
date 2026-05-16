@@ -1,6 +1,6 @@
 const educations = [
   {
-    title: "B.S. Information Systems Engineering",
+    title: "B.S. in Information Systems Engineering",
     institution: "Universidad Tecnológica Nacional, Argentina",
     date: "2021 - 2025",
     description: "Graduated with academic honors (2nd highest GPA in cohort).",
@@ -9,7 +9,6 @@ const educations = [
     title: "Certified Tech Developer",
     institution: "Digital House, Argentina",
     date: "2021 - 2022",
-    description: "Completed a two-year full stack development course.",
   },
 ];
 

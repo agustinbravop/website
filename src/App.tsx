@@ -31,7 +31,7 @@ function App() {
         className="absolute top-0 left-0 right-0 p-3 sm:p-4 backdrop-blur-sm z-20 flex justify-between items-center"
       >
         <div className="flex items-baseline gap-3">
-          <p className="text-gray-400 hidden sm:inline">Software Engineer</p>
+          <p className="text-gray-400 hidden sm:inline">Full-Stack Engineer</p>
           <h1 className="text-xl font-bold">Agustín Bravo</h1>
         </div>
         <div className="flex gap-2 sm:gap-4 text-sm sm:text-base pt-1.5 sm:pt-1">

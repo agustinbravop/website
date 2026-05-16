@@ -4,13 +4,13 @@ import StackIcon from "tech-stack-icons";
 const skillIcons: Record<string, React.ReactNode> = {
   React: <StackIcon name="react" />,
   TypeScript: <StackIcon name="typescript" />,
-  Go: <StackIcon name="go" />,
+  Tailwind: <StackIcon name="tailwindcss" />,
   Python: <StackIcon name="python" />,
-  Git: <StackIcon name="git" />,
+  Go: <StackIcon name="go" />,
   PostgreSQL: <StackIcon name="postgresql" />,
-  Linux: <StackIcon name="linux" />,
   Docker: <StackIcon name="docker" />,
   Kubernetes: <StackIcon name="kubernetes" />,
+  Linux: <StackIcon name="linux" />,
   AWS: <StackIcon name="aws" variant="dark" />,
 };
 
@@ -18,7 +18,7 @@ const SkillsContent = () => {
   return (
     <div>
       <h3 className="text-md text-white">
-        A full stack engineer AND a devops tryhard.
+        A full-stack engineer AND a devops tryhard.
       </h3>
       <div className="grid grid-cols-5 gap-y-4 mt-4">
         {Object.entries(skillIcons).map(([skill, icon]) => (

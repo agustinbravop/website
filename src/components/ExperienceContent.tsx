@@ -5,12 +5,13 @@ const experiences = [
     title: "Engineering Intern",
     company: "ECOM Chaco S.A.",
     date: "Jun 2025 - Nov 2025",
-    highlight: "Ramped to senior-level productivity within two months.",
+    highlight:
+      "Ramped up to senior-level productivity within three months working across developer tooling and platform engineering.",
     description: [
-      "Migrated over 50 services to Kubernetes.",
-      "Built a full-stack app as the internal portal of our infrastructure self-service system.",
+      "Built an entire full-stack app that worked as the internal portal of our infrastructure self-service system.",
       "Implemented a data pipeline to prove our team's business impact with data-driven insights.",
-      "Improved tooling to reduce deployment times from days to minutes across four teams.",
+      "Improved CI/CD pipelines and infrastructure self-service tooling to reduce deployment times from days to minutes.",
+      "Migrated over 50 live services to Kubernetes.",
       "Deployed observability with Prometheus and Grafana for 100+ apps.",
     ],
   },
@@ -19,9 +20,8 @@ const experiences = [
     company: "Universidad Tecnológica Nacional",
     date: "Apr 2023 – Nov 2025",
     description: [
-      "Worked on three interdisciplinary research projects.",
-      "Applied data science techniques to predict key parameters affecting water treatment efficiency.",
-      "Contributed to a research project developing a security control framework for IoT networks.",
+      "Collaborated on three interdisciplinary research projects.",
+      "Helped develop a security control framework for IoT networks. Co-authored and published two papers.",
     ],
   },
 ];
@@ -49,7 +49,7 @@ const ExperienceContent = () => {
           </div>
           {exp.highlight && (
             <p
-              className={`bg-teal-500/25 highlight-card relative overflow-hidden border border-teal-500/50 px-1 py-0.5 text-gray-200 text-md ${animateOnLoad ? "animate-on-load" : ""}`}
+              className={`bg-teal-500/25 highlight-card relative overflow-hidden border border-teal-500/50 px-1 mt-2 py-0.5 text-gray-200 text-md ${animateOnLoad ? "animate-on-load" : ""}`}
             >
               {exp.highlight}
             </p>

@@ -21,17 +21,17 @@ const AboutMeContent = () => {
         >
           AI-native, product-minded software engineer
         </span>{" "}
-        experienced in building full-stack applications and managing
-        cloud-native infrastructure.
+        experienced in building full-stack applications and scalable
+        cloud-native platforms.
       </p>
       <p>
-        I work across the entire software lifecycle to deliver scalable,
-        maintainable systems. I&apos;m a generalist that takes end-to-end
-        ownership of complex problems to deliver practical solutions.
+        I work across the entire tech stack to deliver scalable, maintainable
+        systems. I&apos;m a generalist that takes end-to-end ownership of
+        complex problems to deliver practical, thoughtful solutions.
       </p>
       <p>
-        I thrive working with high-performing teams in high-stakes environments
-        building high-impact products.
+        I genuinely thrive working with ambitious teams in fast-paced
+        environments building high-impact products.
       </p>
     </div>
   );
