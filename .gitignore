@@ -1,2 +1,5 @@
 dist
 node_modules
+
+# Ignore files created by copy-pasting files from Windows File Explorer to WSL file system.
+*:Zone.Identifier

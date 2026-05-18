@@ -8,7 +8,7 @@ const experiences = [
     highlight:
       "Ramped up to senior-level productivity within three months working across developer tooling and platform engineering.",
     description: [
-      "Built an entire full-stack app that worked as the internal portal of our infrastructure self-service system.",
+      "Built an entire full-stack app as the internal portal of our infrastructure self-service platform.",
       "Implemented a data pipeline to prove our team's business impact with data-driven insights.",
       "Improved CI/CD pipelines and infrastructure self-service tooling to reduce deployment times from days to minutes.",
       "Migrated over 50 live services to Kubernetes.",

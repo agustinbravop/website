@@ -26,8 +26,8 @@ const AboutMeContent = () => {
       </p>
       <p>
         I work across the entire tech stack to deliver scalable, maintainable
-        systems. I&apos;m a generalist that takes end-to-end ownership of
-        complex problems to deliver practical, thoughtful solutions.
+        systems that push the business forward. I&apos;m a generalist that takes
+        end-to-end ownership of complex problems to deliver practical solutions.
       </p>
       <p>
         I genuinely thrive working with ambitious teams in fast-paced
