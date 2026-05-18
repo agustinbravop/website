@@ -1,30 +1,32 @@
-import React from "react";
-import StackIcon from "tech-stack-icons";
+import icons from "./skillIcons";
 
-const skillIcons: Record<string, React.ReactNode> = {
-  React: <StackIcon name="react" />,
-  TypeScript: <StackIcon name="typescript" />,
-  Tailwind: <StackIcon name="tailwindcss" />,
-  Python: <StackIcon name="python" />,
-  Go: <StackIcon name="go" />,
-  PostgreSQL: <StackIcon name="postgresql" />,
-  Docker: <StackIcon name="docker" />,
-  Kubernetes: <StackIcon name="kubernetes" />,
-  Linux: <StackIcon name="linux" />,
-  AWS: <StackIcon name="aws" variant="dark" />,
-};
+const skills = [
+  { label: "React", icon: icons.react },
+  { label: "TypeScript", icon: icons.typescript },
+  { label: "Tailwind", icon: icons.tailwindcss },
+  { label: "Python", icon: icons.python },
+  { label: "Go", icon: icons.go },
+  { label: "PostgreSQL", icon: icons.postgresql },
+  { label: "Docker", icon: icons.docker },
+  { label: "Kubernetes", icon: icons.kubernetes },
+  { label: "Linux", icon: icons.linux },
+  { label: "AWS", icon: icons.aws },
+];
 
 const SkillsContent = () => {
   return (
     <div>
-      <h3 className="text-md text-white">
+      <h2 className="text-md text-white">
         A full-stack engineer AND a devops tryhard.
-      </h3>
+      </h2>
       <div className="grid grid-cols-5 gap-y-4 mt-4">
-        {Object.entries(skillIcons).map(([skill, icon]) => (
-          <div key={skill} className="flex flex-col items-center gap-1">
-            <div className="w-10 h-10">{icon}</div>
-            <span className="text-gray-200 text-sm">{skill}</span>
+        {skills.map(({ label, icon }) => (
+          <div key={label} className="flex flex-col items-center gap-1">
+            <div
+              className="w-10 h-10"
+              dangerouslySetInnerHTML={{ __html: icon }}
+            />
+            <span className="text-gray-200 text-sm">{label}</span>
           </div>
         ))}
       </div>

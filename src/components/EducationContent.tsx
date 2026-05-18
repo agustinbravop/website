@@ -17,7 +17,7 @@ const EducationContent = () => {
     <div className="flex flex-col gap-4">
       {educations.map((edu, index) => (
         <div key={index}>
-          <h3 className="text-lg font-bold text-white">{edu.title}</h3>
+          <h2 className="text-lg font-bold text-white">{edu.title}</h2>
           <div className="flex flex-wrap justify-between">
             <p className="text-sm italic flex-1 min-w-0">{edu.institution}</p>
             <p className="text-sm text-gray-400 shrink-0 ml-2">{edu.date}</p>

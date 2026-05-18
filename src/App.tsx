@@ -1,11 +1,12 @@
-import { useRef } from "react";
-import Scene from "./components/Scene";
-import ArkanoidGame from "./components/ArkanoidGame";
+import { lazy, Suspense, useRef } from "react";
 import Panel from "./components/Panel";
 import MobileAccordion from "./components/MobileAccordion";
 import PortfolioModal from "./components/PortfolioModal";
 import { useAppContext } from "./context/AppContext";
 import { useWindowSize } from "./hooks/useWindowSize";
+
+const Scene = lazy(() => import("./components/Scene"));
+const ArkanoidGame = lazy(() => import("./components/ArkanoidGame"));
 
 const PANEL_ORDER = ["about", "skills", "experience", "education", "buttons"];
 
@@ -23,8 +24,16 @@ function App() {
 
   return (
     <div className="h-screen w-screen bg-[#1a1a1a] text-white font-sans overflow-hidden">
-      <Scene />
-      {isWideEnough && <ArkanoidGame />}
+      {!isMobile && (
+        <Suspense fallback={null}>
+          <Scene />
+        </Suspense>
+      )}
+      {isWideEnough && (
+        <Suspense fallback={null}>
+          <ArkanoidGame />
+        </Suspense>
+      )}
 
       <header
         ref={headerRef}
@@ -34,7 +43,10 @@ function App() {
           <p className="text-gray-400 hidden sm:inline">Full-Stack Engineer</p>
           <h1 className="text-xl font-bold">Agustín Bravo</h1>
         </div>
-        <div className="flex gap-2 sm:gap-4 text-sm sm:text-base pt-1.5 sm:pt-1">
+        <nav
+          aria-label="Social links"
+          className="flex gap-2 sm:gap-4 text-sm sm:text-base pt-1.5 sm:pt-1"
+        >
           <a
             href="https://www.linkedin.com/in/agustinbravop"
             target="_blank"
@@ -65,7 +77,7 @@ function App() {
           >
             Email
           </a>
-        </div>
+        </nav>
       </header>
 
       <main className="relative w-full h-full z-10">

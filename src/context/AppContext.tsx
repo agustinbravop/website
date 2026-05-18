@@ -98,7 +98,7 @@ const initialState: AppState = {
     },
     {
       id: "education",
-      position: { x: -740, y: 355 },
+      position: { x: -740, y: 380 },
       data: {
         label: "Education",
         content: <EducationContent />,

@@ -45,7 +45,7 @@ const PortfolioModal = () => {
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.9, opacity: 0 }}
-            className="w-[900px] h-[600px] bg-[#1C1C1C]/95 backdrop-blur-md border border-white/10 rounded-lg shadow-2xl overflow-hidden flex"
+            className="w-225 h-150 bg-[#1C1C1C]/95 backdrop-blur-md border border-white/10 rounded-lg shadow-2xl overflow-hidden flex"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="w-64 border-r border-white/10 flex flex-col">
@@ -80,6 +80,7 @@ const PortfolioModal = () => {
                 </div>
                 <button
                   onClick={() => setIsPortfolioModalOpen(false)}
+                  aria-label="Close"
                   className="text-gray-400 hover:text-white text-2xl leading-none cursor-pointer"
                 >
                   ×

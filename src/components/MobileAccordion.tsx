@@ -35,7 +35,7 @@ const MobileAccordion: React.FC<MobileAccordionProps> = ({ items }) => {
                 )}
               />
             </button>
-            <AnimatePresence>
+            <AnimatePresence initial={false}>
               {openIds.includes(item.id) && (
                 <motion.div
                   initial={{ height: 0 }}

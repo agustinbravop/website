@@ -132,6 +132,7 @@ const Panel: React.FC<PanelProps> = ({
               e.stopPropagation();
               setIsCollapsed(!isCollapsed);
             }}
+            aria-label={isCollapsed ? `Expand ${label}` : `Collapse ${label}`}
             className="w-6 h-6 flex items-center justify-center rounded hover:bg-mist-800 transition-colors text-gray-400 hover:text-white"
           >
             <ChevronDown

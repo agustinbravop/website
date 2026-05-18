@@ -6,7 +6,7 @@ const experiences = [
     company: "ECOM Chaco S.A.",
     date: "Jun 2025 - Nov 2025",
     highlight:
-      "Ramped up to senior-level productivity within three months working across developer tooling and platform engineering.",
+      "Quickly ramped up to become a key contributor across dev tooling and platform engineering within two months.",
     description: [
       "Built an entire full-stack app as the internal portal of our infrastructure self-service platform.",
       "Implemented a data pipeline to prove our team's business impact with data-driven insights.",
@@ -21,7 +21,7 @@ const experiences = [
     date: "Apr 2023 – Nov 2025",
     description: [
       "Collaborated on three interdisciplinary research projects.",
-      "Helped develop a security control framework for IoT networks. Co-authored and published two papers.",
+      "Co-authored and published two papers at national academic conferences.",
     ],
   },
 ];
@@ -42,7 +42,7 @@ const ExperienceContent = () => {
     <div className="flex flex-col gap-4">
       {experiences.map((exp, index) => (
         <div key={index}>
-          <h3 className="text-lg font-bold text-white">{exp.title}</h3>
+          <h2 className="text-lg font-bold text-white">{exp.title}</h2>
           <div className="flex flex-wrap justify-between">
             <p className="text-sm italic flex-1 min-w-0">{exp.company}</p>
             <p className="text-sm text-gray-400 shrink-0 ml-2">{exp.date}</p>
