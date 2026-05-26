@@ -3,13 +3,13 @@ import icons from "./skillIcons";
 const skills = [
   { label: "React", icon: icons.react },
   { label: "TypeScript", icon: icons.typescript },
-  { label: "Tailwind", icon: icons.tailwindcss },
   { label: "Python", icon: icons.python },
   { label: "Go", icon: icons.go },
   { label: "PostgreSQL", icon: icons.postgresql },
+  { label: "Tailwind", icon: icons.tailwindcss },
+  { label: "Linux", icon: icons.linux },
   { label: "Docker", icon: icons.docker },
   { label: "Kubernetes", icon: icons.kubernetes },
-  { label: "Linux", icon: icons.linux },
   { label: "AWS", icon: icons.aws },
 ];
 
