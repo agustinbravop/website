@@ -1,5 +1,8 @@
 dist
 node_modules
 
+# Git worktrees created locally by agents/tools
+.worktrees/
+
 # Ignore files created by copy-pasting files from Windows File Explorer to WSL file system.
 *:Zone.Identifier
