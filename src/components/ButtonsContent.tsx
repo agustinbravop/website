@@ -1,11 +1,11 @@
-// import { useAppContext } from "../context/AppContext";
+import { useAppContext } from "../context/AppContext";
 
 const ButtonsContent = () => {
-  // const { setIsPortfolioModalOpen } = useAppContext();
+  const { setIsPortfolioModalOpen } = useAppContext();
 
   return (
     <div className="flex gap-3 px-4">
-      {/*<div className="relative flex-1 rounded group">
+      <div className="relative flex-1 rounded group">
         <div
           className="absolute inset-0 rounded border border-teal-500/40 group-hover:border-teal-500/80 animate-[shimmer_5s_linear_infinite]"
           style={{
@@ -20,7 +20,7 @@ const ButtonsContent = () => {
         >
           See portfolio
         </button>
-      </div> */}
+      </div>
       <div className="relative flex-1 rounded group">
         <div
           className="absolute inset-0 rounded border border-white/70 group-hover:border-white/50 animate-[shimmer_5s_linear_infinite]"
