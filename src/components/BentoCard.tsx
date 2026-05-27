@@ -13,7 +13,12 @@ export default function BentoCard({ project, onClick }: Props) {
         role="button"
         tabIndex={0}
         onClick={onClick}
-        onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") onClick(); }}
+        onKeyDown={(e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            onClick();
+          }
+        }}
         aria-label={`View ${project.title} details`}
         className={`col-span-2 h-[220px] rounded-xl border border-white/10 overflow-hidden cursor-pointer relative bg-gradient-to-br ${project.gradient} transition-all duration-200 hover:scale-[1.02] hover:shadow-xl`}
       >
@@ -58,7 +63,12 @@ export default function BentoCard({ project, onClick }: Props) {
       role="button"
       tabIndex={0}
       onClick={onClick}
-      onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") onClick(); }}
+      onKeyDown={(e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          onClick();
+        }
+      }}
       aria-label={`View ${project.title} details`}
       className="col-span-1 h-[160px] rounded-xl border border-white/10 overflow-hidden cursor-pointer flex flex-col transition-all duration-200 hover:scale-[1.02] hover:shadow-xl"
     >

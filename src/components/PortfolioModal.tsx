@@ -78,6 +78,7 @@ const PortfolioModal = () => {
                       Portfolio
                     </span>
                     <button
+                      type="button"
                       onClick={() => setIsPortfolioModalOpen(false)}
                       aria-label="Close"
                       className="text-gray-400 hover:text-white text-xl leading-none cursor-pointer"
