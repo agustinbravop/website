@@ -1,38 +1,25 @@
-import { motion, useReducedMotion } from "framer-motion";
-import type { Variants } from "framer-motion";
 import type { Project } from "../data/portfolioData";
+import TagChip from "./TagChip";
 
 interface Props {
   project: Project;
   onClose: () => void;
+  onBack?: () => void;
 }
 
-export default function ProjectCard({ project, onClose }: Props) {
-  const shouldReduceMotion = useReducedMotion();
-
-  const variants: Variants = shouldReduceMotion
-    ? {
-        hidden: { opacity: 0 },
-        visible: { opacity: 1 },
-      }
-    : {
-        hidden: { opacity: 0, y: 14 },
-        visible: {
-          opacity: 1,
-          y: 0,
-          transition: { duration: 0.28, ease: [0.16, 1, 0.3, 1] },
-        },
-      };
-
+export default function ProjectCard({ project, onClose, onBack }: Props) {
   return (
-    <motion.section
-      key={project.title}
-      initial="hidden"
-      animate="visible"
-      exit="hidden"
-      variants={variants}
-      className="relative w-full h-full bg-[#1C1C1C]/80 backdrop-blur-sm border border-white/10 rounded-2xl shadow-2xl overflow-hidden"
-    >
+    <section className="relative w-full h-full bg-[#1C1C1C]/80 border border-white/10 rounded-2xl shadow-2xl overflow-hidden">
+      {onBack && (
+        <button
+          type="button"
+          onClick={onBack}
+          aria-label="Back to overview"
+          className="absolute top-4 left-4 flex items-center gap-1 px-3 py-1.5 bg-black/40 hover:bg-black/60 text-gray-300 hover:text-white rounded-full transition-colors text-sm cursor-pointer z-10"
+        >
+          ← Back
+        </button>
+      )}
       <button
         type="button"
         onClick={onClose}
@@ -43,63 +30,62 @@ export default function ProjectCard({ project, onClose }: Props) {
       </button>
 
       <div className="h-full flex flex-col">
-        <div
-          className={`relative w-full aspect-[16/9] bg-gradient-to-br ${project.gradient} border-b border-white/10`}
-        >
-          {project.media?.type === "video" ? (
-            <video
-              src={project.media.src}
-              poster={project.media.poster}
-              muted
-              controls
-              playsInline
-              className="absolute inset-0 w-full h-full object-cover"
-            />
-          ) : project.media?.type === "image" ? (
-            <img
-              src={project.media.src}
-              alt={project.media.alt}
-              loading="lazy"
-              className="absolute inset-0 w-full h-full object-cover"
-            />
-          ) : (
-            <div className="absolute inset-0" />
-          )}
-
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#1C1C1C]/80 via-transparent to-transparent" />
-        </div>
-
         <div className="flex-1 overflow-y-auto">
           <div className="p-6 sm:p-8">
-            <div className="flex items-start justify-between gap-4">
-              <div className="min-w-0">
-                <div className="flex items-baseline gap-3">
-                  <h2 className="text-3xl sm:text-4xl font-bold text-white tracking-tight truncate">
-                    {project.title}
-                  </h2>
-                  <span className="text-xs sm:text-sm text-gray-400 whitespace-nowrap">
-                    {project.year}
-                  </span>
-                </div>
-                <p className="mt-2 text-teal-400 text-sm font-medium">
-                  {project.role}
-                </p>
-              </div>
+            <div className="flex items-baseline gap-3 mb-2">
+              <h2 className="text-3xl sm:text-4xl font-bold text-white tracking-tight">
+                {project.title}
+              </h2>
+              {project.link && (
+                <a
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 text-teal-400 hover:text-teal-300 text-sm sm:text-base transition-colors"
+                >
+                  <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                  {project.linkLabel ?? "View project"}
+                </a>
+              )}
+              <span className="ml-auto text-sm sm:text-base text-gray-400 whitespace-nowrap">
+                {project.year}
+              </span>
             </div>
 
-            <div className="mt-5 flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-2 mb-6">
               {project.tags.map((tag) => (
-                <span
-                  key={tag}
-                  className="px-3 py-1 rounded-full text-xs text-gray-200 bg-white/5 border border-white/10"
-                >
-                  {tag}
-                </span>
+                <TagChip key={tag} tag={tag} />
               ))}
             </div>
 
+            <div
+              className={`w-full rounded-xl overflow-hidden bg-gradient-to-br ${project.gradient} mb-6`}
+            >
+              {project.media?.type === "video" ? (
+                <video
+                  src={project.media.src}
+                  poster={project.media.poster}
+                  muted
+                  controls
+                  playsInline
+                  className="w-full h-auto object-cover"
+                />
+              ) : project.media?.type === "image" ? (
+                <img
+                  src={project.media.src}
+                  alt={project.media.alt}
+                  loading="lazy"
+                  className="w-full h-auto object-cover"
+                />
+              ) : (
+                <div className="aspect-[16/9]" />
+              )}
+            </div>
+
             <div className="mt-6 space-y-5">
-              <p className="text-gray-200 leading-relaxed">
+              <p className="text-gray-200 text-base leading-relaxed">
                 {project.description}
               </p>
 
@@ -114,22 +100,9 @@ export default function ProjectCard({ project, onClose }: Props) {
                 </ul>
               )}
             </div>
-
-            {project.link && (
-              <div className="mt-8">
-                <a
-                  href={project.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center px-4 py-2 rounded-lg bg-teal-600/80 hover:bg-teal-600 text-white text-sm font-medium transition-colors border border-teal-400/20"
-                >
-                  {project.linkLabel ?? "View project"}
-                </a>
-              </div>
-            )}
           </div>
         </div>
       </div>
-    </motion.section>
+    </section>
   );
 }
