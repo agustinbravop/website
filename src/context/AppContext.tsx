@@ -108,11 +108,11 @@ const initialState: AppState = {
     },
     {
       id: "buttons",
-      position: { x: 465, y: 680 },
+      position: { x: 340, y: 680 },
       data: {
         label: "",
         content: <ButtonsContent />,
-        width: 275,
+        width: 400,
       },
       zIndex: 2,
     },

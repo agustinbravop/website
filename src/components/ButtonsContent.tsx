@@ -7,7 +7,7 @@ const ButtonsContent = () => {
     <div className="flex gap-3 px-4">
       <div className="relative flex-1 rounded group">
         <div
-          className="absolute inset-0 rounded border border-teal-500/40 group-hover:border-teal-500/80 animate-[shimmer_5s_linear_infinite]"
+          className="absolute inset-0 rounded border border-teal-200/80 group-hover:border-teal-500/80 animate-[shimmer_5s_linear_infinite]"
           style={{
             background:
               "linear-gradient(90deg, transparent 0%, rgba(20,184,166,0.5) 50%, transparent 100%)",
@@ -16,7 +16,7 @@ const ButtonsContent = () => {
         />
         <button
           onClick={() => setIsPortfolioModalOpen(true)}
-          className="relative w-full py-2 px-4 bg-[#1C1C1C]/80 text-gray-300 hover:text-teal-400 font-medium text-md rounded transition-all cursor-pointer border border-teal-500/20 active:scale-[0.97] duration-75"
+          className="relative w-full py-2 px-4 bg-[#1C1C1C]/80 text-gray-300 hover:text-white font-medium text-md rounded transition-all cursor-pointer border border-teal-500/20 active:scale-[0.97] duration-75"
         >
           See portfolio
         </button>
@@ -50,7 +50,7 @@ const ButtonsContent = () => {
                 d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
               />
             </svg>
-            Download resume
+            Resume
           </span>
         </a>
       </div>
