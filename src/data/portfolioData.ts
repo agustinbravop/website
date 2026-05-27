@@ -6,11 +6,11 @@ export interface Project {
   title: string;
   initials: string;
   year: string;
-  role: string;
   description: string;
   highlights: string[];
   tags: string[];
   gradient: string;
+  featured?: boolean;
   link?: string;
   linkLabel?: string;
   media?: ProjectMedia;
@@ -21,7 +21,7 @@ export const projects: Project[] = [
     title: "Atlas Mobile",
     initials: "AM",
     year: "2025",
-    role: "Lead Engineer",
+    featured: true,
     description:
       "A React Native app that helps families stay connected with senior relatives through lightweight check-ins, shared moments, and gentle reminders.",
     highlights: [
@@ -43,7 +43,6 @@ export const projects: Project[] = [
     title: "Bloom Motion",
     initials: "BM",
     year: "2024",
-    role: "Frontend Developer",
     description:
       "A small interactive web experiment exploring motion, video, and performance on low-end devices.",
     highlights: [
