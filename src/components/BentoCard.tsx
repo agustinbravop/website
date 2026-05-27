@@ -10,13 +10,18 @@ export default function BentoCard({ project, onClick }: Props) {
   if (project.featured) {
     return (
       <div
+        role="button"
+        tabIndex={0}
         onClick={onClick}
+        onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") onClick(); }}
+        aria-label={`View ${project.title} details`}
         className={`col-span-2 h-[220px] rounded-xl border border-white/10 overflow-hidden cursor-pointer relative bg-gradient-to-br ${project.gradient} transition-all duration-200 hover:scale-[1.02] hover:shadow-xl`}
       >
         {project.media?.type === "image" && (
           <img
             src={project.media.src}
             alt={project.media.alt}
+            loading="lazy"
             className="absolute inset-0 w-full h-full object-cover opacity-40"
           />
         )}
@@ -50,7 +55,11 @@ export default function BentoCard({ project, onClick }: Props) {
 
   return (
     <div
+      role="button"
+      tabIndex={0}
       onClick={onClick}
+      onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") onClick(); }}
+      aria-label={`View ${project.title} details`}
       className="col-span-1 h-[160px] rounded-xl border border-white/10 overflow-hidden cursor-pointer flex flex-col transition-all duration-200 hover:scale-[1.02] hover:shadow-xl"
     >
       <div className={`flex-[0_0_55%] bg-gradient-to-br ${project.gradient}`} />
