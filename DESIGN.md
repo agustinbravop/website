@@ -1,41 +1,95 @@
 # DESIGN.md
 
-This document outlines the design, architecture, and core principles of the interactive portfolio website.
+This document outlines the design, architecture, and core principles of the portfolio website.
 
-## High-Level Concept
+## Narrative
 
-The portfolio is designed as an immersive digital environment rather than a traditional webpage. It presents professional resume content as a series of movable panels floating above a dynamic, interactive background. The core experience is centered around the playful and sophisticated interaction between the user's actions and the fluid, generative visuals, creating a memorable impression of technical and design-oriented skill.
+**"I build things that matter."**
+
+The site's job is to complement the fast-shipping, high-output signal that already comes through LinkedIn and direct messages. Here, the emphasis is on craft, intentionality, and end-to-end ownership. Every section is evidence of deliberate, high-quality work — not just velocity.
+
+The visitor's journey: arrive at a striking terminal hero → scroll through confident claims backed by real proof → leave remembering a builder who cares about the work.
+
+## Visual Direction
+
+Inspired by: Ramp, Bending Spoons, 011h, Lleverage.ai.
+
+- **Aesthetic**: Sharp, dark, confident. Bold declarative typography. Amber accent used purposefully and often — not as a border hint, but as a statement.
+- **Tone**: Premium tool energy. Warm (amber) but precise (Geist). Not corporate, not hacker — startup craftsman.
+- **Whitespace**: Generous. Sections breathe. Content is never crowded.
+
+## Design Tokens
+
+| Token | Value | Notes |
+|---|---|---|
+| Background | `#0a0a0a` | Near-black, not pure black |
+| Surface | `#111111` | Cards, nav |
+| Border | `rgba(255,255,255,0.08)` | Subtle |
+| Accent | `#F59E0B` | True gold — amber-500 |
+| Accent dim | `rgba(245,158,11,0.15)` | Backgrounds, hover fills |
+| Text primary | `#FAFAFA` | Off-white |
+| Text muted | `#71717A` | zinc-500 |
+| Font | Geist, sans-serif | Loaded from Google Fonts / Vercel CDN |
+
+## Layout
+
+Full-page vertical scroll. Each section is a distinct viewport-height block. Sticky top navigation with frosted glass treatment.
+
+**Section order:**
+1. Hero
+2. About
+3. Experience
+4. Stack
+5. Work (portfolio)
+6. Contact / Footer
 
 ## Core Technologies
 
-- **Frontend Framework:** React with TypeScript (via Vite)
-- **3D Rendering:** Three.js, managed declaratively with `@react-three/fiber`.
-- **Draggable UI:** Framer Motion for smooth, physics-based dragging of content panels.
-- **State Management:** Valtio for performant, real-time state synchronization between the UI and the 3D scene.
-- **Styling:** Tailwind CSS for a utility-first styling workflow.
+- **Frontend**: React with TypeScript (Vite)
+- **Animations**: Framer Motion — scroll-triggered reveals, terminal typewriter hero
+- **Styling**: Tailwind CSS v4
+- **State**: Valtio (retained for PortfolioModal project detail view)
 
-## Architecture: A Decoupled Two-Layer System
+## Removed from Previous Version
 
-The application is built on a two-layer architecture that separates the UI from the 3D background, allowing each to be optimized for its specific purpose.
+- **Three.js / fluid mesh background**: Removed. The terminal hero is the signature moment; two competing showpieces diluted each other.
+- **Draggable panels**: Removed. Replaced by scroll-based sections — more navigable for recruiters, more readable for content-heavy sections.
+- **ArkanoidGame easter egg**: Removed for simplicity.
+- **Merriweather font**: Replaced by Geist.
 
-### 1. UI Layer (React & Framer Motion)
+## Section Design Notes
 
-- **Responsibility:** Renders all content, including the header and the individual resume panels (`About Me`, `Experience`, etc.).
-- **Implementation:**
-  - This is a standard React application that lives on a transparent background with a high `z-index`.
-  - Each resume section is a `<DraggablePanel>` component built with `motion.div` from **Framer Motion**.
-  - Dragging is handled by a "drag handle" on the header of each panel, leaving the body content free for text selection.
-  - The entire layout is static; there is no canvas-wide panning or zooming.
+### 1. Hero
+Full-viewport. Terminal typewriter animation types identity progressively:
+```
+> Agustín Bravo
+> Software Engineer.
+> Full-stack. Startup-paced. I build things that matter.
+```
+Amber blinking cursor. No background image — pure dark with a very subtle dot grid texture. Single CTA button scrolls to About or links to CV.
 
-### 2. 3D Background Layer (Three.js)
+### 2. About
+One bold declarative claim as headline (large, Ramp-style). Short 3-line bio below. No walls of text.
 
-- **Responsibility:** Renders the full-screen, interactive `FluidMesh` visual that lives behind the UI layer.
-- **Implementation:**
-  - A single, full-screen `<Canvas>` component from `@react-three/fiber` is positioned with a low `z-index`.
-  - It contains the `<FluidMesh>` component, which is a `planeGeometry` with a custom `shaderMaterial`.
+### 3. Experience
+Timeline layout. Metrics surface as typographic statements — not buried in bullets. Inspired by Ramp's data-as-design approach: `50+`, `days → minutes`, `100+` in large amber type.
 
-## Design Philosophy
+### 4. Stack
+Two-column split: **Product side** (React, TypeScript, Tailwind) and **Platform side** (Docker, Kubernetes, AWS, Go). Reinforces the full-stack-to-infrastructure narrative.
 
-- **Aesthetic:** Minimalist, dark, and monochromatic. It uses "false blacks" (`#1a1a1a`) and "false whites" (off-white and gray text) to create a sophisticated, high-contrast theme that is easy on the eyes.
-- **Typography:** The primary font is **Merriweather** (from Google Fonts), a serif font that provides a professional, established feel, contrasting with the high-tech visuals.
-- **Interaction:** Interactions are designed to be exploratory and satisfying. The fluid response of the mesh and the smooth animations of the panels create a polished, "premium" user experience.
+### 5. Work
+Portfolio cards. Featured project gets a wide card. Secondary projects in a grid. Clicking opens the existing PortfolioModal detail view.
+
+### 6. Contact / Footer
+Minimal. Name, social links, email CTA. One line.
+
+## Interaction Model
+
+- **Scroll-triggered reveals**: Elements animate in as sections enter the viewport (fade + slight upward translate). Framer Motion `whileInView`.
+- **Terminal typewriter**: Hero types character by character with a blinking cursor. Amber `#F59E0B`.
+- **Hover states**: Amber glow on interactive elements, scale on cards.
+- **Navigation**: Sticky top bar with section links. Frosted glass (`backdrop-blur`). Active section highlighted in amber.
+
+## Mobile
+
+Responsive. Single-column on mobile. Terminal hero still works (shorter lines). Navigation collapses to a hamburger or simplified link row.
