@@ -1,16 +1,14 @@
 import type { ReactNode } from "react";
-import { ArrowUpRight } from "lucide-react";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import AccentLink from "@/components/ui/accent-link";
 
 const em = (text: string) => (
-  <span className="font-semibold" style={{ color: "var(--brand)" }}>
-    {text}
-  </span>
+  <span className="font-semibold text-primary">{text}</span>
 );
 
 const projects: {
@@ -22,24 +20,9 @@ const projects: {
   linkLabel: string | null;
 }[] = [
   {
-    title: "Mobile App",
-    year: "2025",
-    tags: ["TypeScript", "React Native", "Expo", "Supabase"],
-    description: (
-      <>
-        Launched {em("Elepad")} on the Google Play Store, a full-stack mobile
-        app that connects families with their senior relatives. Built as a
-        capstone project by a team of 5 engineers that owned it from product
-        discovery to final delivery.
-      </>
-    ),
-    link: "https://www.linkedin.com/posts/agustinbravop_softwareengineering-productdesign-ux-ugcPost-7458876019114995712-J40-/",
-    linkLabel: "Demo video",
-  },
-  {
     title: "LLM Minigame",
-    year: "2025",
-    tags: ["React", "Python", "OpenAI", "LLM"],
+    year: "2026",
+    tags: ["React", "Python", "OpenAI"],
     description: (
       <>
         {em("Airlock")} is a social deduction game set on a space station. You
@@ -51,6 +34,44 @@ const projects: {
     ),
     link: "https://airlock.agusbravo.dev",
     linkLabel: "Play",
+  },
+  {
+    title: "Kubernetes Homelab",
+    year: "2026",
+    tags: ["Kubernetes", "Argo CD", "Cloudflare"],
+    description: (
+      <>
+        I built a k3s cluster to self-host everything I ship under{" "}
+        <AccentLink
+          href="https://agusbravo.dev"
+          variant="secondary"
+          className="text-primary font-semibold"
+        >
+          agusbravo.dev
+        </AccentLink>
+        . Every app has Cloudflare for DNS and DDoS protection, cert-manager for
+        TLS, and Argo CD GitOps for auto-deploys on every push. A simple{" "}
+        <span className="font-mono tracking-tighter">install.sh</span> spins up
+        the entire setup.
+      </>
+    ),
+    link: "https://github.com/agustinbravop/homelab",
+    linkLabel: "See the code",
+  },
+  {
+    title: "Mobile App",
+    year: "2025",
+    tags: ["TypeScript", "React Native", "Expo", "Supabase"],
+    description: (
+      <>
+        Launched {em("Elepad")} on the Google Play Store: a full-stack mobile
+        app that connects families with their senior relatives. Built as a
+        capstone project by a team of 5 engineers who owned it from product
+        discovery to final delivery.
+      </>
+    ),
+    link: "https://www.linkedin.com/posts/agustinbravop_softwareengineering-productdesign-ux-ugcPost-7458876019114995712-J40-/",
+    linkLabel: "Watch the demo",
   },
   {
     title: "Chrome Extension",
@@ -73,8 +94,9 @@ const projects: {
     description: (
       <>
         Published {em("Mis Apuntes de ISI")}, a static website with all my class
-        notes from university available to everyone. I like open-sourcing
-        knowledge, especially when it's useful to others.
+        notes from university available to everyone. It's helped dozens of
+        students pass their exams. I like open-sourcing knowledge, especially
+        when it's useful to others.
       </>
     ),
     link: "https://apuntes.agusbravo.dev",
@@ -84,8 +106,8 @@ const projects: {
 
 export default function ProjectsSection() {
   return (
-    <section className="pt-8">
-      <p className="label mb-2">Projects</p>
+    <section className="mt-8">
+      <p className="font-mono text-sm text-muted-foreground mb-2">Projects</p>
 
       <Accordion type="single" collapsible>
         {projects.map((project, i) => (
@@ -100,23 +122,23 @@ export default function ProjectsSection() {
                     {project.tags.join(" · ")}
                   </span>
                 </div>
-                <span className="label shrink-0">{project.year}</span>
+                <span className="font-mono text-sm text-muted-foreground shrink-0">
+                  {project.year}
+                </span>
               </div>
             </AccordionTrigger>
             <AccordionContent>
-              <p className="body-text leading-relaxed">{project.description}</p>
+              <p className="text-[15px] text-secondary-foreground leading-relaxed">
+                {project.description}
+              </p>
               {project.link && (
-                <a
+                <AccentLink
                   href={project.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group/link inline-flex items-center gap-1.5 mt-3 font-mono text-sm text-primary"
+                  external
+                  className="mt-3 text-[15px]"
                 >
-                  <span className="link-underline">
-                    {project.linkLabel ?? "View project"}
-                  </span>
-                  <ArrowUpRight className="size-[13px] mb-px transition-transform duration-150 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5" />
-                </a>
+                  {project.linkLabel ?? "View project"}
+                </AccentLink>
               )}
             </AccordionContent>
           </AccordionItem>

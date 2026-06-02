@@ -7,9 +7,7 @@ import {
 import type { ReactNode } from "react";
 
 const em = (text: string) => (
-  <span className="font-semibold" style={{ color: "var(--brand)" }}>
-    {text}
-  </span>
+  <span className="font-semibold text-primary">{text}</span>
 );
 
 const experiences: {
@@ -24,17 +22,16 @@ const experiences: {
     date: "Jun 2025 – Nov 2025",
     bullets: [
       <>
-        Intense internship at a local software agency, reporting to senior
-        engineers.
+        Intense internship at a software agency, reporting to senior engineers.
       </>,
       <>
         Became a key contributor in platform engineering{" "}
         {em("within two months")}, working with tools like kubectl, Argo CD,
-        Vault, shell-operator and OpenTelemetry.
+        Vault, shell-operator and OTel.
       </>,
       <>
-        Contributed to the full-stack portal of our infrastructure self-service
-        platform.
+        Contributed to an internal full-stack platform building workflows that
+        enable infrastructure self-service for developers.
       </>,
       <>
         Migrated {em("50+")} live services with thousands of users to
@@ -88,7 +85,9 @@ export default function ExperienceSection() {
   return (
     <>
       <section>
-        <p className="label mb-2">Work</p>
+        <p className="mt-8 font-mono text-sm text-muted-foreground mb-2">
+          Work
+        </p>
 
         <Accordion type="single" collapsible>
           {experiences.map((exp, i) => (
@@ -101,14 +100,19 @@ export default function ExperienceSection() {
                     </p>
                     <p className="mt-0.5">{exp.company}</p>
                   </div>
-                  <span className="label shrink-0">{exp.date}</span>
+                  <span className="font-mono text-sm text-muted-foreground shrink-0">
+                    {exp.date}
+                  </span>
                 </div>
               </AccordionTrigger>
               <AccordionContent>
                 <ul className="space-y-1">
                   {exp.bullets.map((b, j) => (
-                    <li key={j} className="flex items-start gap-2 body-text">
-                      <span className="size-[3px] shrink-0 rounded-full mt-[10px] bg-primary" />
+                    <li
+                      key={j}
+                      className="flex items-start gap-2 text-[15px] text-secondary-foreground"
+                    >
+                      <span className="size-0.75 shrink-0 rounded-full mt-2.5 bg-primary" />
                       <span>{b}</span>
                     </li>
                   ))}
@@ -119,17 +123,27 @@ export default function ExperienceSection() {
         </Accordion>
       </section>
 
-      <section className="pt-8">
-        <p className="label mb-2">Education</p>
+      <section className="mt-8">
+        <p className="font-mono text-sm text-muted-foreground mb-2">
+          Education
+        </p>
         <div className="flex flex-col gap-5 pt-2">
           {educations.map((edu, i) => (
             <div key={i}>
               <div className="flex items-baseline justify-between gap-4">
                 <p className="font-medium">{edu.title}</p>
-                <span className="label shrink-0">{edu.date}</span>
+                <span className="font-mono text-sm text-muted-foreground shrink-0">
+                  {edu.date}
+                </span>
               </div>
-              <p className="mt-0.5 body-text">{edu.institution}</p>
-              {edu.note && <p className="mt-0.5 body-text">{edu.note}</p>}
+              <p className="mt-0.5 text-[15px] text-secondary-foreground">
+                {edu.institution}
+              </p>
+              {edu.note && (
+                <p className="mt-0.5 text-[15px] text-secondary-foreground">
+                  {edu.note}
+                </p>
+              )}
             </div>
           ))}
         </div>
