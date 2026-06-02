@@ -14,20 +14,21 @@ Recruiters and engineering leads at startups and scale-ups. They arrive from a L
 
 ## Brand
 
-- **Voice**: Confident, direct, no hedging. Statements, not questions. "I build things that matter" — not "I try to build impactful software."
-- **Tone**: Startup craftsman. Warm (amber) but precise (Geist). Premium without being corporate.
+- **Voice**: Confident, direct, no hedging. Statements not questions. "Interface to infrastructure. I own the whole thing."
+- **Tone**: Startup craftsman. White space as confidence. Quiet precision over loud decoration.
 - **Personality**: Ambitious, intentional, technically deep, product-aware.
 
 ## Strategic Principles
 
 1. Every section is evidence, not description. Show proof, not claims about personality.
-2. The amber accent is a statement, not a decoration. Use it where it matters.
-3. Generosity of whitespace signals confidence. Crowded = nervous.
-4. One signature moment (terminal hero). Don't dilute it.
+2. White space signals confidence. Crowded = nervous.
+3. The accent color appears only on interactive elements — it marks action, not decoration.
+4. "Interface to infrastructure. I own the whole thing." is the identity statement of the About section. Never remove it.
 
 ## Anti-references
 
 - Generic dark dev portfolios (black + green terminal, nothing else)
 - Cluttered "everything on one screen" resumes
-- Portfolios that lead with a photo and a long About Me paragraph
+- AI-generated minimalism: uniform text-sm everywhere, no typographic hierarchy, safe and invisible
 - Sites that feel like a Word document with CSS
+- Portfolios where every section looks identical to every other section

@@ -13,22 +13,23 @@
 ### Task 1: Create portfolioData.ts
 
 **Files:**
+
 - Create: `src/data/portfolioData.ts`
 
 - [ ] **Create the data file**
 
 ```typescript
 export interface Project {
-  title: string
-  initials: string
-  year: string
-  role: string
-  description: string
-  highlights: string[]
-  tags: string[]
-  gradient: string
-  link?: string
-  linkLabel?: string
+  title: string;
+  initials: string;
+  year: string;
+  role: string;
+  description: string;
+  highlights: string[];
+  tags: string[];
+  gradient: string;
+  link?: string;
+  linkLabel?: string;
 }
 
 export const projects: Project[] = [
@@ -66,10 +67,11 @@ export const projects: Project[] = [
     link: "https://github.com",
     linkLabel: "View on GitHub",
   },
-]
+];
 ```
 
 - [ ] **Commit**
+
 ```bash
 git add src/data/portfolioData.ts
 git commit -m "feat: add portfolio data layer with enriched Project type"
@@ -80,9 +82,11 @@ git commit -m "feat: add portfolio data layer with enriched Project type"
 ### Task 2: Create ProjectCard.tsx
 
 **Files:**
+
 - Create: `src/components/ProjectCard.tsx`
 
 Component with:
+
 - Framer Motion `motion.div` with drag, for swipe
 - 3D tilt via mouse position tracking
 - Hero gradient area + glass detail panel
@@ -219,6 +223,7 @@ export default function ProjectCard({ project, onClose, onSwipe }: Props) {
 ```
 
 - [ ] **Commit**
+
 ```bash
 git add src/components/ProjectCard.tsx
 git commit -m "feat: add ProjectCard with swipe, 3D tilt, and glass detail panel"
@@ -229,9 +234,11 @@ git commit -m "feat: add ProjectCard with swipe, 3D tilt, and glass detail panel
 ### Task 3: Rewrite PortfolioModal.tsx
 
 **Files:**
+
 - Modify: `src/components/PortfolioModal.tsx` (full rewrite)
 
 Full-screen modal with:
+
 - AnimatePresence open/close
 - 60px sidebar with dots + initials
 - AnimatePresence card transitions (slide direction based on nav)
@@ -378,6 +385,7 @@ export default function PortfolioModal() {
 ```
 
 - [ ] **Commit**
+
 ```bash
 git add src/components/PortfolioModal.tsx
 git commit -m "feat: rewrite PortfolioModal with Gallery layout, sidebar, swipe, and keyboard nav"
@@ -388,6 +396,7 @@ git commit -m "feat: rewrite PortfolioModal with Gallery layout, sidebar, swipe,
 ### Task 4: Wire up "See portfolio" button in ButtonsContent.tsx
 
 **Files:**
+
 - Modify: `src/components/ButtonsContent.tsx`
 
 Uncomment the "See portfolio" button and wire it to the context. Add the import.
@@ -427,6 +436,7 @@ const ButtonsContent = () => {
 ```
 
 - [ ] **Commit**
+
 ```bash
 git add src/components/ButtonsContent.tsx
 git commit -m "feat: enable See portfolio button with teal shimmer styling"

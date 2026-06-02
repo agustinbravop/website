@@ -47,16 +47,16 @@ No new dependencies. Framer Motion handles all animation.
 
 ```typescript
 interface Project {
-  title: string
-  initials: string          // "MA", "CE" — shown in sidebar
-  year: string
-  role: string              // "Lead Engineer", "Solo Developer"
-  description: string
-  highlights: string[]      // bullet points
-  tags: string[]
-  gradient: string          // e.g. "from-teal-900 via-cyan-900 to-blue-900"
-  link?: string
-  linkLabel?: string        // "View on GitHub", "Try it live"
+  title: string;
+  initials: string; // "MA", "CE" — shown in sidebar
+  year: string;
+  role: string; // "Lead Engineer", "Solo Developer"
+  description: string;
+  highlights: string[]; // bullet points
+  tags: string[];
+  gradient: string; // e.g. "from-teal-900 via-cyan-900 to-blue-900"
+  link?: string;
+  linkLabel?: string; // "View on GitHub", "Try it live"
 }
 ```
 
@@ -65,28 +65,33 @@ Existing 2 placeholder projects updated with realistic data and distinct gradien
 ## Interactions
 
 ### Modal open/close
+
 - Opens scaling up from the button's position with a blur-fade background.
 - Content staggers: card slides in first, then glass panel fades up, then text fades in.
 - Close reverses: text fades out, glass fades, card shrinks toward button, backdrop fades.
 
 ### Project navigation (3 methods)
+
 1. **Sidebar dots** — click to jump. Active dot pulses.
 2. **Horizontal drag** — drag the card left/right. Spring physics with momentum, velocity detection, rubber-band at edges. Settles with damping.
 3. **Arrow keys** — left/right keyboard arrows.
 
 ### On-switch transition
+
 - Current card slides out (horizontal offset + slight opacity fade)
 - Next card slides in from the opposite direction
 - Subtle parallax: gradient background scrolls at 0.8x speed of content
 - Glass panel pulse on settle (`scale: 1.02` for 300ms)
 
 ### 3D tilt (desktop only)
+
 - `perspective: 1000px` on card container
 - `rotateX`/`rotateY` computed from mouse position relative to card center
 - Max ±3° — subtle, feels alive
 - Smooths out on drag (tilt disabled during active drag)
 
 ### Close
+
 - × button in top-right of card
 - Click backdrop (outside card area)
 - Escape key
@@ -94,6 +99,7 @@ Existing 2 placeholder projects updated with realistic data and distinct gradien
 ## Visual Styling
 
 Maintains existing design language:
+
 - Background: `bg-[#1C1C1C]/80 backdrop-blur-md border border-white/10`
 - Text: `text-white`, `text-gray-200`, `text-gray-400` hierarchy
 - Accent: `teal-500` for active states, highlights

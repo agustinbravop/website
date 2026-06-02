@@ -1,152 +1,127 @@
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { projects } from "../data/portfolioData";
-import TagChip from "./TagChip";
-import SplitText from "./SplitText";
+import type { ReactNode } from "react";
+import { ArrowUpRight } from "lucide-react";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+
+const em = (text: string) => (
+  <span className="font-semibold" style={{ color: "var(--brand)" }}>
+    {text}
+  </span>
+);
+
+const projects: {
+  title: string;
+  year: string;
+  tags: string[];
+  description: ReactNode;
+  link: string | null;
+  linkLabel: string | null;
+}[] = [
+  {
+    title: "Mobile App",
+    year: "2025",
+    tags: ["TypeScript", "React Native", "Expo", "Supabase"],
+    description: (
+      <>
+        Launched {em("Elepad")} on the Google Play Store, a full-stack mobile
+        app that connects families with their senior relatives. Built as a
+        capstone project by a team of 5 engineers that owned it from product
+        discovery to final delivery.
+      </>
+    ),
+    link: "https://www.linkedin.com/posts/agustinbravop_softwareengineering-productdesign-ux-ugcPost-7458876019114995712-J40-/",
+    linkLabel: "Demo video",
+  },
+  {
+    title: "LLM Minigame",
+    year: "2025",
+    tags: ["React", "Python", "OpenAI", "LLM"],
+    description: (
+      <>
+        {em("Airlock")} is a social deduction game set on a space station. You
+        must ask 5 questions to identify which of three LLM crewmates is the
+        traitor, each with a unique alibi and personality. This project served
+        as an interesting playground for experimenting with prompts,
+        speech-to-text and text-to-speech.
+      </>
+    ),
+    link: "https://airlock.agusbravo.dev",
+    linkLabel: "Play",
+  },
+  {
+    title: "Chrome Extension",
+    year: "2024",
+    tags: ["JavaScript", "Open Source"],
+    description: (
+      <>
+        Shipped {em("Michiutilidades")}, an open-source browser extension built
+        for students at my university. It took just two days to make and has
+        {em(" 100+ weekly active users")}.
+      </>
+    ),
+    link: "https://chromewebstore.google.com/detail/michiutilidades-sysacad-f/hgccklchbgcdkjdjpbhedjjlklpgfjnk",
+    linkLabel: "Chrome Web Store",
+  },
+  {
+    title: "University Notes",
+    year: "2024",
+    tags: ["SSG", "Markdown", "Obsidian", "Documentation"],
+    description: (
+      <>
+        Published {em("Mis Apuntes de ISI")}, a static website with all my class
+        notes from university available to everyone. I like open-sourcing
+        knowledge, especially when it's useful to others.
+      </>
+    ),
+    link: "https://apuntes.agusbravo.dev",
+    linkLabel: "Visit",
+  },
+];
 
 export default function ProjectsSection() {
-  const [expanded, setExpanded] = useState<number | null>(null);
-
   return (
-    <section id="projects" className="py-20 px-6">
-      <div className="max-w-6xl mx-auto">
-        <h2 className="text-5xl sm:text-6xl font-bold text-zinc-50 tracking-tighter mb-12">
-          <SplitText>Projects.</SplitText>
-        </h2>
+    <section className="pt-8">
+      <p className="label mb-2">Projects</p>
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.4, delay: 0.2 }}
-        >
-          {projects.map((project, i) => {
-            const isOpen = expanded === i;
-            const num = String(i + 1).padStart(2, "0");
-
-            return (
-              <div key={project.title} className="border-t border-white/[0.06]">
-                <button
-                  type="button"
-                  onClick={() => setExpanded(isOpen ? null : i)}
-                  className="w-full py-8 text-left group cursor-pointer"
-                >
-                  <div className="flex items-baseline justify-between gap-6">
-                    <div className="flex items-baseline gap-6">
-                      <span className="text-amber-500 font-mono text-sm w-6 shrink-0 select-none">
-                        {num}
-                      </span>
-                      <h3 className="text-2xl sm:text-3xl font-bold text-zinc-50 tracking-tight group-hover:text-amber-400 transition-colors duration-150">
-                        {project.title}
-                      </h3>
-                    </div>
-                    <div className="flex items-center gap-6 shrink-0">
-                      <span className="text-zinc-400 font-mono text-sm hidden sm:block">
-                        {project.year}
-                      </span>
-                      <span className="text-amber-500 font-mono text-base leading-none w-3 text-right select-none">
-                        {isOpen ? "−" : "+"}
-                      </span>
-                    </div>
-                  </div>
-
-                  <div className="flex gap-1.5 mt-3 ml-12 flex-wrap">
-                    {project.tags.map((tag) => (
-                      <TagChip key={tag} tag={tag} />
-                    ))}
-                  </div>
-                </button>
-
-                <AnimatePresence initial={false}>
-                  {isOpen && (
-                    <motion.div
-                      key="expanded"
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: "auto", opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }}
-                      style={{ overflow: "hidden" }}
-                    >
-                      <div className="ml-12 mb-12">
-                        {/* Amber border draws left-to-right on open */}
-                        <div className="overflow-hidden h-px mb-6" aria-hidden>
-                          <motion.div
-                            className="h-full origin-left"
-                            initial={{ scaleX: 0 }}
-                            animate={{ scaleX: 1 }}
-                            transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }}
-                            style={{ background: "rgba(245,158,11,0.25)" }}
-                          />
-                        </div>
-                      <div className="grid sm:grid-cols-[220px_1fr] gap-8">
-                        {/* Visual block */}
-                        <div
-                          className={`w-full aspect-[4/3] bg-gradient-to-br ${project.gradient} overflow-hidden relative flex-none`}
-                        >
-                          {project.media?.type === "image" && (
-                            <img
-                              src={project.media.src}
-                              alt={project.media.alt}
-                              loading="lazy"
-                              className="absolute inset-0 w-full h-full object-cover opacity-50 mix-blend-overlay"
-                            />
-                          )}
-                          {project.media?.type === "video" && (
-                            <video
-                              src={project.media.src}
-                              poster={project.media.poster}
-                              muted
-                              autoPlay
-                              loop
-                              playsInline
-                              className="absolute inset-0 w-full h-full object-cover opacity-40 mix-blend-overlay"
-                            />
-                          )}
-                        </div>
-
-                        {/* Text */}
-                        <div className="flex flex-col gap-5">
-                          <p className="text-zinc-200 text-lg leading-relaxed" style={{ maxWidth: "55ch" }}>
-                            {project.description}
-                          </p>
-
-                          {project.highlights.length > 0 && (
-                            <ul className="space-y-2">
-                              {project.highlights.map((h, j) => (
-                                <li key={j} className="flex items-start gap-3 text-lg">
-                                  <span className="text-amber-500 font-mono mt-0.5 select-none">▪</span>
-                                  <span className="text-zinc-300">{h}</span>
-                                </li>
-                              ))}
-                            </ul>
-                          )}
-
-                          {project.link && (
-                            <a
-                              href={project.link}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="inline-flex items-center gap-2 text-amber-400 hover:text-amber-300 text-base font-medium transition-colors self-start mt-1"
-                            >
-                              {project.linkLabel ?? "View project"}
-                              <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                              </svg>
-                            </a>
-                          )}
-                        </div>
-                      </div>
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
+      <Accordion type="single" collapsible>
+        {projects.map((project, i) => (
+          <AccordionItem key={i} value={`project-${i}`}>
+            <AccordionTrigger>
+              <div className="flex flex-1 items-baseline justify-between gap-4">
+                <div className="flex items-baseline gap-3 min-w-0">
+                  <span className="font-medium text-base text-foreground shrink-0 transition-colors duration-200 group-aria-expanded/accordion-trigger:text-primary">
+                    {project.title}
+                  </span>
+                  <span className="font-mono text-[0.8125rem] text-muted-foreground truncate">
+                    {project.tags.join(" · ")}
+                  </span>
+                </div>
+                <span className="label shrink-0">{project.year}</span>
               </div>
-            );
-          })}
-
-          <div className="border-t border-white/[0.06]" />
-        </motion.div>
-      </div>
+            </AccordionTrigger>
+            <AccordionContent>
+              <p className="body-text leading-relaxed">{project.description}</p>
+              {project.link && (
+                <a
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group/link inline-flex items-center gap-1.5 mt-3 font-mono text-sm text-primary"
+                >
+                  <span className="link-underline">
+                    {project.linkLabel ?? "View project"}
+                  </span>
+                  <ArrowUpRight className="size-[13px] mb-px transition-transform duration-150 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5" />
+                </a>
+              )}
+            </AccordionContent>
+          </AccordionItem>
+        ))}
+      </Accordion>
     </section>
   );
 }

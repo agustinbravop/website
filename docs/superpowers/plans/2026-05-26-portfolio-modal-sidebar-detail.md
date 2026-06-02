@@ -46,6 +46,7 @@ Run: `bun run lint`
 Expected: exit code 0.
 
 Notes:
+
 - This repo does not include a unit/integration test runner currently. For this feature, we treat `bun run build` (typecheck + build) and `bun run lint` as the primary automated checks, plus manual UI verification in dev.
 
 ---
@@ -53,6 +54,7 @@ Notes:
 ### Task 1: Add Project Media Support
 
 **Files:**
+
 - Modify: `src/data/portfolioData.ts`
 
 - [ ] **Update the Project type with a media union**
@@ -62,28 +64,28 @@ Edit `src/data/portfolioData.ts` to:
 ```ts
 export type ProjectMedia =
   | {
-      type: "image"
-      src: string
-      alt: string
+      type: "image";
+      src: string;
+      alt: string;
     }
   | {
-      type: "video"
-      src: string
-      poster?: string
-    }
+      type: "video";
+      src: string;
+      poster?: string;
+    };
 
 export interface Project {
-  title: string
-  initials: string
-  year: string
-  role: string
-  description: string
-  highlights: string[]
-  tags: string[]
-  gradient: string
-  link?: string
-  linkLabel?: string
-  media?: ProjectMedia
+  title: string;
+  initials: string;
+  year: string;
+  role: string;
+  description: string;
+  highlights: string[];
+  tags: string[];
+  gradient: string;
+  link?: string;
+  linkLabel?: string;
+  media?: ProjectMedia;
 }
 ```
 
@@ -127,6 +129,7 @@ git commit -m "feat: add portfolio project media model"
 ### Task 2: Rework ProjectCard into a Single-Page Detail View
 
 **Files:**
+
 - Modify: `src/components/ProjectCard.tsx`
 
 This file currently implements the draggable/tilt/swipe “gallery card”. Replace it with a right-pane detail component that:
@@ -143,8 +146,8 @@ New props:
 
 ```ts
 interface Props {
-  project: Project
-  onClose: () => void
+  project: Project;
+  onClose: () => void;
 }
 ```
 
@@ -153,25 +156,27 @@ interface Props {
 Use the `ProjectMedia` union:
 
 ```tsx
-{project.media?.type === "video" ? (
-  <video
-    className="w-full h-full object-cover"
-    src={project.media.src}
-    poster={project.media.poster}
-    muted
-    controls
-    playsInline
-  />
-) : project.media?.type === "image" ? (
-  <img
-    className="w-full h-full object-cover"
-    src={project.media.src}
-    alt={project.media.alt}
-    loading="lazy"
-  />
-) : (
-  <div className={`w-full h-full bg-gradient-to-br ${project.gradient}`} />
-)}
+{
+  project.media?.type === "video" ? (
+    <video
+      className="w-full h-full object-cover"
+      src={project.media.src}
+      poster={project.media.poster}
+      muted
+      controls
+      playsInline
+    />
+  ) : project.media?.type === "image" ? (
+    <img
+      className="w-full h-full object-cover"
+      src={project.media.src}
+      alt={project.media.alt}
+      loading="lazy"
+    />
+  ) : (
+    <div className={`w-full h-full bg-gradient-to-br ${project.gradient}`} />
+  );
+}
 ```
 
 - [ ] **Add subtle, consistent motion (reduced-motion aware)**
@@ -200,6 +205,7 @@ git commit -m "feat: redesign project detail view for portfolio modal"
 ### Task 3: Rewrite PortfolioModal as Two-Pane Sidebar + Detail
 
 **Files:**
+
 - Modify: `src/components/PortfolioModal.tsx`
 
 - [ ] **Replace the current layout with a two-pane frame**
@@ -210,7 +216,11 @@ Target structure:
 <motion.div className="fixed inset-0 ..." onClick={close}>
   <motion.div className="w-[92vw] h-[88vh] max-w-6xl ..." onClick={stop}>
     <aside className="...">...project list...</aside>
-    <section className="...">...<ProjectCard />...</section>
+    <section className="...">
+      ...
+      <ProjectCard />
+      ...
+    </section>
   </motion.div>
 </motion.div>
 ```
@@ -295,6 +305,7 @@ git commit -m "feat: redesign portfolio modal with sidebar and detail"
 ### Task 4: Cleanup + Final Verification
 
 **Files:**
+
 - Modify: any file that has unused imports/props after the rewrite
 
 - [ ] **Remove unused props/imports created by the rewrite**

@@ -83,22 +83,22 @@ All other fields (`title`, `initials`, `year`, `description`, `highlights`, `tag
 
 ## Components Changed
 
-| File | Change |
-|------|--------|
-| `portfolioData.ts` | Add `featured?: boolean` to `Project` type; mark featured projects |
-| `PortfolioModal.tsx` | Rewrite: remove sidebar, add bento grid, add two-state view logic |
-| `ProjectCard.tsx` | No changes — reused as the detail panel |
-| `TagChip.tsx` | No changes |
+| File                 | Change                                                             |
+| -------------------- | ------------------------------------------------------------------ |
+| `portfolioData.ts`   | Add `featured?: boolean` to `Project` type; mark featured projects |
+| `PortfolioModal.tsx` | Rewrite: remove sidebar, add bento grid, add two-state view logic  |
+| `ProjectCard.tsx`    | No changes — reused as the detail panel                            |
+| `TagChip.tsx`        | No changes                                                         |
 
 A new `BentoCard.tsx` component handles the individual card rendering (featured and regular variants) to keep `PortfolioModal` clean.
 
 ## Keyboard Navigation
 
-| Key | Behavior |
-|-----|----------|
-| `Escape` | Back to overview, or close modal |
-| `Enter` / `Space` | Open focused card's detail view |
-| Arrow keys | Focus next/previous card in the grid |
+| Key               | Behavior                             |
+| ----------------- | ------------------------------------ |
+| `Escape`          | Back to overview, or close modal     |
+| `Enter` / `Space` | Open focused card's detail view      |
+| Arrow keys        | Focus next/previous card in the grid |
 
 ## Out of Scope
 

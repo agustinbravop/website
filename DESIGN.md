@@ -1,95 +1,72 @@
 # DESIGN.md
 
-This document outlines the design, architecture, and core principles of the portfolio website.
-
 ## Narrative
 
-**"I build things that matter."**
+**"Interface to infrastructure. I own the whole thing."**
 
-The site's job is to complement the fast-shipping, high-output signal that already comes through LinkedIn and direct messages. Here, the emphasis is on craft, intentionality, and end-to-end ownership. Every section is evidence of deliberate, high-quality work — not just velocity.
-
-The visitor's journey: arrive at a striking terminal hero → scroll through confident claims backed by real proof → leave remembering a builder who cares about the work.
+The visitor's journey: arrive at a calm, confident identity statement (hero + name) → read the philosophy (About headline) → explore the evidence on demand (accordion sections) → leave with a clear picture of a builder who owns the whole stack.
 
 ## Visual Direction
 
-Inspired by: Ramp, Bending Spoons, 011h, Lleverage.ai.
+Inspired by: inakivalencia.com, julianozen.com, kentbeck.com, lovefrom.com.
 
-- **Aesthetic**: Sharp, dark, confident. Bold declarative typography. Amber accent used purposefully and often — not as a border hint, but as a statement.
-- **Tone**: Premium tool energy. Warm (amber) but precise (Geist). Not corporate, not hacker — startup craftsman.
-- **Whitespace**: Generous. Sections breathe. Content is never crowded.
+- **Aesthetic**: Minimalist white. Radical whitespace. Text carries all the weight.
+- **Tone**: Quiet confidence. The restraint is the statement — it differentiates from the dark/glowing AI-portfolio default.
+- **Whitespace**: Generous. Pages breathe. White space is not empty space; it's the design.
 
-## Design Tokens
+## Color System (OKLCH)
 
-| Token | Value | Notes |
-|---|---|---|
-| Background | `#0a0a0a` | Near-black, not pure black |
-| Surface | `#111111` | Cards, nav |
-| Border | `rgba(255,255,255,0.08)` | Subtle |
-| Accent | `#F59E0B` | True gold — amber-500 |
-| Accent dim | `rgba(245,158,11,0.15)` | Backgrounds, hover fills |
-| Text primary | `#FAFAFA` | Off-white |
-| Text muted | `#71717A` | zinc-500 |
-| Font | Geist, sans-serif | Loaded from Google Fonts / Vercel CDN |
+All colors are defined as CSS variables in `index.css`.
+
+| Variable       | Value                   | Role                                               |
+| -------------- | ----------------------- | -------------------------------------------------- |
+| `--bg`         | `oklch(98.5% 0.006 85)` | Warm near-white background                         |
+| `--text`       | `oklch(17% 0.005 85)`   | Warm near-black, primary text                      |
+| `--text-muted` | `oklch(45% 0.004 85)`   | Body text, descriptions                            |
+| `--text-quiet` | `oklch(63% 0.003 85)`   | Metadata, dates, labels                            |
+| `--border`     | `oklch(91% 0.005 85)`   | Section separators                                 |
+| `--accent`     | `oklch(60% 0.14 65)`    | Interactive elements only (links, open indicators) |
+
+The accent alternate (forest green `oklch(40% 0.10 145)`) is commented in the CSS.
+
+## Typography
+
+Single family: **Geist** (sans-serif). Weight ceiling: `font-medium`. Never bold headings.
+
+| Element                     | Size                                | Weight       | Color                     |
+| --------------------------- | ----------------------------------- | ------------ | ------------------------- |
+| Hero name                   | `clamp(1.75rem, 4vw, 2.5rem)`       | medium       | `--text`                  |
+| About headline              | `clamp(1.25rem, 3vw, 1.625rem)`     | medium       | `--text` / `--text-quiet` |
+| Body text                   | `0.9rem`                            | normal       | `--text-muted`            |
+| Entry titles (job, project) | `0.875rem`                          | medium       | `--text`                  |
+| Metadata (dates, tags)      | `0.75rem`                           | normal, mono | `--text-quiet`            |
+| Section accordion labels    | `0.75rem` uppercase tracking-widest | normal       | `--text-quiet`            |
 
 ## Layout
 
-Full-page vertical scroll. Each section is a distinct viewport-height block. Sticky top navigation with frosted glass treatment.
+Single content column, `max-w-[640px]`, left-aligned, `px-6`. No navbar.
 
 **Section order:**
-1. Hero
-2. About
-3. Experience
-4. Stack
-5. Work (portfolio)
-6. Contact / Footer
 
-## Core Technologies
+1. Hero (always visible)
+2. About (always open, no toggle)
+3. Experience (collapsed accordion)
+4. Projects (collapsed accordion, with inner project rows)
+5. Stack (collapsed accordion)
+6. Footer
 
-- **Frontend**: React with TypeScript (Vite)
-- **Animations**: Framer Motion — scroll-triggered reveals, terminal typewriter hero
-- **Styling**: Tailwind CSS v4
-- **State**: Valtio (retained for PortfolioModal project detail view)
+## Interaction
+
+- **Accordion only**: sections expand/collapse with a `height` + `opacity` transition (framer-motion AnimatePresence).
+- **No scroll animations, no load animations, no hover effects beyond color transitions.**
+- **Open indicator**: `+` collapses to `−`, both use `--accent` color when open.
 
 ## Removed from Previous Version
 
-- **Three.js / fluid mesh background**: Removed. The terminal hero is the signature moment; two competing showpieces diluted each other.
-- **Draggable panels**: Removed. Replaced by scroll-based sections — more navigable for recruiters, more readable for content-heavy sections.
-- **ArkanoidGame easter egg**: Removed for simplicity.
-- **Merriweather font**: Replaced by Geist.
-
-## Section Design Notes
-
-### 1. Hero
-Full-viewport. Terminal typewriter animation types identity progressively:
-```
-> Agustín Bravo
-> Software Engineer.
-> Full-stack. Startup-paced. I build things that matter.
-```
-Amber blinking cursor. No background image — pure dark with a very subtle dot grid texture. Single CTA button scrolls to About or links to CV.
-
-### 2. About
-One bold declarative claim as headline (large, Ramp-style). Short 3-line bio below. No walls of text.
-
-### 3. Experience
-Timeline layout. Metrics surface as typographic statements — not buried in bullets. Inspired by Ramp's data-as-design approach: `50+`, `days → minutes`, `100+` in large amber type.
-
-### 4. Stack
-Two-column split: **Product side** (React, TypeScript, Tailwind) and **Platform side** (Docker, Kubernetes, AWS, Go). Reinforces the full-stack-to-infrastructure narrative.
-
-### 5. Work
-Portfolio cards. Featured project gets a wide card. Secondary projects in a grid. Clicking opens the existing PortfolioModal detail view.
-
-### 6. Contact / Footer
-Minimal. Name, social links, email CTA. One line.
-
-## Interaction Model
-
-- **Scroll-triggered reveals**: Elements animate in as sections enter the viewport (fade + slight upward translate). Framer Motion `whileInView`.
-- **Terminal typewriter**: Hero types character by character with a blinking cursor. Amber `#F59E0B`.
-- **Hover states**: Amber glow on interactive elements, scale on cards.
-- **Navigation**: Sticky top bar with section links. Frosted glass (`backdrop-blur`). Active section highlighted in amber.
-
-## Mobile
-
-Responsive. Single-column on mobile. Terminal hero still works (shorter lines). Navigation collapses to a hamburger or simplified link row.
+- **Dark background + amber glow**: Replaced by white + OKLCH color system.
+- **Terminal typewriter hero**: Replaced by static name + tagline.
+- **AmbientGlow, MorphingGeometry**: Deleted.
+- **NavBar with scroll progress**: Deleted — no nav.
+- **SplitText, CountUp**: Deleted — no load/scroll animations.
+- **TagChip, skillIcons**: Deleted — tags are plain text, skills are plain lists.
+- **Framer Motion whileInView reveals**: Removed — accordion transitions only.

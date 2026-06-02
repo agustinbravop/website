@@ -12,18 +12,19 @@
 
 ## File Map
 
-| File | Action | Responsibility |
-|------|--------|----------------|
-| `src/data/portfolioData.ts` | Modify | Add `featured?: boolean` to `Project` type; mark featured projects |
-| `src/components/BentoCard.tsx` | Create | Renders featured (col-span-2) and regular (col-span-1) card variants |
-| `src/components/PortfolioModal.tsx` | Rewrite | Two-state view, bento grid, keyboard nav |
-| `src/components/ProjectCard.tsx` | Modify | Add `onBack?: () => void` prop + Back button (spec said no changes, but Back button must live somewhere — here is cleanest) |
+| File                                | Action  | Responsibility                                                                                                              |
+| ----------------------------------- | ------- | --------------------------------------------------------------------------------------------------------------------------- |
+| `src/data/portfolioData.ts`         | Modify  | Add `featured?: boolean` to `Project` type; mark featured projects                                                          |
+| `src/components/BentoCard.tsx`      | Create  | Renders featured (col-span-2) and regular (col-span-1) card variants                                                        |
+| `src/components/PortfolioModal.tsx` | Rewrite | Two-state view, bento grid, keyboard nav                                                                                    |
+| `src/components/ProjectCard.tsx`    | Modify  | Add `onBack?: () => void` prop + Back button (spec said no changes, but Back button must live somewhere — here is cleanest) |
 
 ---
 
 ### Task 1: Add `featured` field to data model
 
 **Files:**
+
 - Modify: `src/data/portfolioData.ts`
 
 - [ ] **Step 1: Add `featured` to the `Project` interface and mark existing projects**
@@ -85,6 +86,7 @@ git commit -m "feat: add featured field to Project type"
 ### Task 2: Create `BentoCard` component
 
 **Files:**
+
 - Create: `src/components/BentoCard.tsx`
 
 - [ ] **Step 1: Create the file**
@@ -115,7 +117,9 @@ export default function BentoCard({ project, onClick }: Props) {
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
         <div className="absolute bottom-0 left-0 right-0 p-4">
           <h3 className="text-xl font-bold text-white">{project.title}</h3>
-          <p className="text-sm text-gray-300 truncate mt-1">{project.description}</p>
+          <p className="text-sm text-gray-300 truncate mt-1">
+            {project.description}
+          </p>
           <div className="flex gap-1.5 mt-2 flex-wrap">
             {project.tags.slice(0, 4).map((tag) => (
               <TagChip key={tag} tag={tag} />
@@ -129,8 +133,18 @@ export default function BentoCard({ project, onClick }: Props) {
               onClick={(e) => e.stopPropagation()}
               className="inline-flex items-center gap-1 text-teal-400 hover:text-teal-300 text-sm mt-2 transition-colors"
             >
-              <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+              <svg
+                className="w-3 h-3"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={2}
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                />
               </svg>
               {project.linkLabel ?? "View project"}
             </a>
@@ -147,7 +161,9 @@ export default function BentoCard({ project, onClick }: Props) {
     >
       <div className={`flex-[0_0_55%] bg-gradient-to-br ${project.gradient}`} />
       <div className="flex-1 bg-[#1C1C1C] p-3">
-        <p className="text-white font-semibold text-sm truncate">{project.title}</p>
+        <p className="text-white font-semibold text-sm truncate">
+          {project.title}
+        </p>
         <p className="text-gray-400 text-xs mt-0.5">{project.year}</p>
         <div className="flex gap-1 mt-1.5 flex-wrap">
           {project.tags.slice(0, 3).map((tag) => (
@@ -180,6 +196,7 @@ git commit -m "feat: add BentoCard component for portfolio bento grid"
 ### Task 3: Add `onBack` prop to `ProjectCard`
 
 **Files:**
+
 - Modify: `src/components/ProjectCard.tsx`
 
 The spec marked this file as unchanged, but the Back button (← overview) must live here — it's the only component rendered in detail view.
@@ -207,16 +224,18 @@ export default function ProjectCard({ project, onClose, onBack }: Props) {
 Then, inside the `<section>` (after the opening tag at line 11), add the Back button before the existing close button:
 
 ```tsx
-      {onBack && (
-        <button
-          type="button"
-          onClick={onBack}
-          aria-label="Back to overview"
-          className="absolute top-4 left-4 flex items-center gap-1 px-3 py-1.5 bg-black/40 hover:bg-black/60 text-gray-300 hover:text-white rounded-full transition-colors text-sm cursor-pointer z-10"
-        >
-          ← Back
-        </button>
-      )}
+{
+  onBack && (
+    <button
+      type="button"
+      onClick={onBack}
+      aria-label="Back to overview"
+      className="absolute top-4 left-4 flex items-center gap-1 px-3 py-1.5 bg-black/40 hover:bg-black/60 text-gray-300 hover:text-white rounded-full transition-colors text-sm cursor-pointer z-10"
+    >
+      ← Back
+    </button>
+  );
+}
 ```
 
 - [ ] **Step 3: Verify TypeScript**
@@ -239,6 +258,7 @@ git commit -m "feat: add onBack prop to ProjectCard for bento overview navigatio
 ### Task 4: Rewrite `PortfolioModal` with bento grid and two-state view
 
 **Files:**
+
 - Modify: `src/components/PortfolioModal.tsx`
 
 - [ ] **Step 1: Replace the entire file**
