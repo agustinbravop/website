@@ -44,8 +44,8 @@ function MarqueeRow({
 
 export default function StackSection() {
   return (
-    <section className="pt-10">
-      <p className="label mb-4">Stack</p>
+    <section className="pt-8">
+      <p className="font-mono text-sm text-muted-foreground mb-4">Stack</p>
       <div className="flex flex-col gap-3 text-sm">
         <MarqueeRow items={rows[0]} duration="15s" />
         <MarqueeRow items={rows[1]} duration="15s" />

@@ -1,4 +1,4 @@
-import { ArrowUpRight } from "lucide-react";
+import AccentLink from "@/components/ui/accent-link";
 
 const links = [
   {
@@ -25,24 +25,22 @@ const links = [
 
 export default function ContactSection() {
   return (
-    <section className="pt-8 mb-20">
-      <p className="label mb-4">Contact</p>
+    <section className="mt-8 mb-20">
+      <p className="font-mono text-sm text-muted-foreground mb-4">Contact</p>
 
       <div className="flex flex-col gap-1">
         {links.map(({ label, handle, href }) => (
-          <div key={label} className="flex items-baseline gap-4">
-            <span className="label shrink-0 w-[4.5rem]">{label}</span>
-            <a
+          <div key={label} className="flex items-baseline gap-4 text-sm">
+            <span className="font-mono text-muted-foreground shrink-0 w-18">
+              {label}
+            </span>
+            <AccentLink
               href={href}
-              target={href.startsWith("mailto") ? undefined : "_blank"}
-              rel={
-                href.startsWith("mailto") ? undefined : "noopener noreferrer"
-              }
-              className="group/link inline-flex items-center gap-0.5 text-sm text-secondary-foreground transition-colors duration-150 hover:text-primary"
+              external={!href.startsWith("mailto")}
+              variant="secondary"
             >
-              <span className="link-underline">{handle}</span>
-              <ArrowUpRight className="size-[13px] mb-px transition-transform duration-150 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5" />
-            </a>
+              {handle}
+            </AccentLink>
           </div>
         ))}
       </div>

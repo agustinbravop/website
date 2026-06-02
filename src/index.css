@@ -18,11 +18,7 @@
 }
 
 :root {
-  /* Custom design tokens */
   --text: oklch(15% 0.015 85);
-  --text-muted: oklch(25% 0.012 85);
-  --text-quiet: oklch(52% 0.006 85);
-  --brand: oklch(40% 0.1 145);
 
   /* shadcn semantic tokens */
   --background: oklch(99.4% 0.006 85);
@@ -38,18 +34,6 @@
   --border: oklch(90% 0.01 85);
   --ring: oklch(40% 0.1 145 / 0.3);
   --radius: 0.5rem;
-}
-
-/* Utility classes for repeated patterns */
-.label {
-  font-family: var(--font-mono);
-  font-size: 0.875rem;
-  color: var(--text-quiet);
-}
-
-.body-text {
-  font-size: 0.9375rem;
-  color: var(--text-muted);
 }
 
 .link-underline {
@@ -88,7 +72,6 @@
 }
 
 @theme inline {
-  --font-sans: "Geist Variable", sans-serif;
   --color-border: var(--border);
   --color-ring: var(--ring);
   --color-background: var(--background);

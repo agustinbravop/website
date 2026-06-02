@@ -2,7 +2,7 @@ import { ArrowDownToLine } from "lucide-react";
 
 export default function AboutSection() {
   return (
-    <section className="my-8">
+    <section className="mt-8">
       <p className="font-bold text-primary">Full stack, full ownership.</p>
       <p>From idea to production, from interface to infrastructure.</p>
       <p>
@@ -21,9 +21,9 @@ export default function AboutSection() {
       <a
         href="/AgustinBravo_Resume.pdf"
         download
-        className="group/resume inline-flex items-center gap-1.5 mt-5 font-mono text-primary"
+        className="group/resume inline-flex items-center gap-1.5 mt-4 font-mono text-primary"
       >
-        <ArrowDownToLine className="size-[14px] transition-transform duration-150 group-hover/resume:translate-y-0.5" />
+        <ArrowDownToLine className="size-3.5 transition-transform duration-150 group-hover/resume:translate-y-0.5" />
         <span className="link-underline">Download resume</span>
       </a>
     </section>
