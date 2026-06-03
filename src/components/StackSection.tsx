@@ -32,7 +32,7 @@ function MarqueeRow({
         {[...items, ...items].map((item, i) => (
           <span
             key={i}
-            className="font-mono whitespace-nowrap text-muted-foreground px-4"
+            className="font-mono whitespace-nowrap text-muted-foreground px-3 sm:px-4"
           >
             {item}
           </span>

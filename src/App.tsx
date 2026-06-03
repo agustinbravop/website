@@ -7,7 +7,7 @@ import ContactSection from "./components/ContactSection";
 
 function App() {
   return (
-    <main className="max-w-160 mx-auto  lg:ml-[25%] lg:mr-auto px-6 pt-20">
+    <main className="max-w-160 mx-auto lg:ml-[25%] lg:mr-auto px-6 pt-12 sm:pt-20">
       <HeroSection />
       <AboutSection />
       <ExperienceSection />

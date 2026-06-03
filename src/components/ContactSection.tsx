@@ -30,7 +30,7 @@ export default function ContactSection() {
 
       <div className="flex flex-col gap-1">
         {links.map(({ label, handle, href }) => (
-          <div key={label} className="flex items-baseline gap-4 text-sm">
+          <div key={label} className="flex items-baseline gap-6 text-sm">
             <span className="font-mono text-muted-foreground shrink-0 w-18">
               {label}
             </span>

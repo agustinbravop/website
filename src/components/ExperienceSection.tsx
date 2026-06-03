@@ -93,16 +93,16 @@ export default function ExperienceSection() {
           {experiences.map((exp, i) => (
             <AccordionItem key={i} value={`exp-${i}`}>
               <AccordionTrigger>
-                <div className="flex flex-1 items-baseline justify-between gap-4">
-                  <div>
-                    <p className="font-medium text-foreground transition-colors duration-200 group-aria-expanded/accordion-trigger:text-primary">
-                      {exp.title}
-                    </p>
-                    <p className="mt-0.5">{exp.company}</p>
-                  </div>
-                  <span className="font-mono text-sm text-muted-foreground shrink-0">
+                <div className="w-full sm:grid sm:grid-cols-[1fr_auto] sm:items-start sm:gap-x-4">
+                  <p className="font-medium text-foreground transition-colors duration-200 group-aria-expanded/accordion-trigger:text-primary sm:col-start-1 sm:row-start-1">
+                    {exp.title}
+                  </p>
+                  <p className="mt-0.5 sm:col-start-1 sm:row-start-2">
+                    {exp.company}
+                  </p>
+                  <p className="mt-0.5 font-mono text-sm text-muted-foreground sm:col-start-2 sm:row-start-1 sm:mt-0.5">
                     {exp.date}
-                  </span>
+                  </p>
                 </div>
               </AccordionTrigger>
               <AccordionContent>
@@ -130,9 +130,9 @@ export default function ExperienceSection() {
         <div className="flex flex-col gap-5 pt-2">
           {educations.map((edu, i) => (
             <div key={i}>
-              <div className="flex items-baseline justify-between gap-4">
+              <div className="grid grid-cols-[1fr_auto] items-start gap-x-4">
                 <p className="font-medium">{edu.title}</p>
-                <span className="font-mono text-sm text-muted-foreground shrink-0">
+                <span className="font-mono text-sm text-muted-foreground mt-0.5">
                   {edu.date}
                 </span>
               </div>
@@ -140,7 +140,7 @@ export default function ExperienceSection() {
                 {edu.institution}
               </p>
               {edu.note && (
-                <p className="mt-0.5 text-[15px] text-secondary-foreground">
+                <p className="mt-0.5 text-sm text-muted-foreground">
                   {edu.note}
                 </p>
               )}
