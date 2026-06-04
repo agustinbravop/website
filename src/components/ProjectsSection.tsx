@@ -110,9 +110,9 @@ export default function ProjectsSection() {
     <section className="mt-8">
       <p className="font-mono text-sm text-muted-foreground mb-2">Projects</p>
 
-      <Accordion type="single" collapsible>
+      <Accordion>
         {projects.map((project, i) => (
-          <AccordionItem key={i} value={`project-${i}`}>
+          <AccordionItem key={i} value={`project-${i}`} className="border-none">
             <AccordionTrigger>
               <div className="grid grid-cols-[1fr_auto] w-full items-start gap-x-4">
                 <div className="flex flex-col sm:flex-row sm:items-baseline gap-0.5 sm:gap-3 min-w-0">

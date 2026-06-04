@@ -89,9 +89,9 @@ export default function ExperienceSection() {
           Work
         </p>
 
-        <Accordion type="single" collapsible>
+        <Accordion>
           {experiences.map((exp, i) => (
-            <AccordionItem key={i} value={`exp-${i}`}>
+            <AccordionItem key={i} value={`exp-${i}`} className="border-none">
               <AccordionTrigger>
                 <div className="w-full sm:grid sm:grid-cols-[1fr_auto] sm:items-start sm:gap-x-4">
                   <p className="font-medium text-foreground transition-colors duration-200 group-aria-expanded/accordion-trigger:text-primary sm:col-start-1 sm:row-start-1">
