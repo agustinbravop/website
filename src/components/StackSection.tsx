@@ -1,14 +1,4 @@
-const rows = [
-  ["TailwindCSS", "React", "TypeScript", "Python", "Go", "SQL", "Claude Code"],
-  [
-    "PostgreSQL",
-    "AWS (SAA Certified)",
-    "Docker",
-    "Kubernetes",
-    "Terraform",
-    "Linux",
-  ],
-];
+import { stack } from "@/data";
 
 function MarqueeRow({
   items,
@@ -47,8 +37,8 @@ export default function StackSection() {
     <section className="pt-8">
       <p className="font-mono text-sm text-muted-foreground mb-4">Stack</p>
       <div className="flex flex-col gap-3 text-sm">
-        <MarqueeRow items={rows[0]} duration="15s" />
-        <MarqueeRow items={rows[1]} duration="15s" />
+        <MarqueeRow items={stack[0]} duration="15s" />
+        <MarqueeRow items={stack[1]} duration="15s" />
       </div>
     </section>
   );

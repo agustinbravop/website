@@ -1,27 +1,5 @@
 import AccentLink from "@/components/ui/accent-link";
-
-const links = [
-  {
-    label: "LinkedIn",
-    handle: "agustinbravop",
-    href: "https://www.linkedin.com/in/agustinbravop",
-  },
-  {
-    label: "GitHub",
-    handle: "agustinbravop",
-    href: "https://github.com/agustinbravop",
-  },
-  {
-    label: "Twitter",
-    handle: "agustinbravop",
-    href: "https://www.x.com/agustinbravop",
-  },
-  {
-    label: "Email",
-    handle: "agustinbravop1@gmail.com",
-    href: "mailto:agustinbravop1@gmail.com",
-  },
-];
+import { links } from "@/data";
 
 export default function ContactSection() {
   return (

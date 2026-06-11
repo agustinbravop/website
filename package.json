@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "bunx --bun vite",
-    "build": "tsc && bunx --bun vite build && bun scripts/prerender.tsx",
+    "build": "bun scripts/generate-seo.ts && tsc && bunx --bun vite build && bun scripts/prerender.tsx",
     "lint": "eslint . --max-warnings 0",
     "format": "prettier --write --list-different .",
     "preview": "bunx --bun vite preview"

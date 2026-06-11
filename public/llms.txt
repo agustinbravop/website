@@ -1,0 +1,56 @@
+# Agustín Bravo
+> Full-Stack Software Engineer
+
+Full stack, full ownership. From idea to production, from interface to infrastructure. Shipping fast and working closely with customers to build solutions they love. Chasing steep learning curves since forever: math olympiads, coding, and now AI. Deeply into the future of startups, product design, and business strategy.
+
+## Experience
+### AI Deployment Specialist at Prox (YC F25) (Jun 2026 – Present)
+- Joined as employee #8, working closely with founders to scale go-to-market efforts at an early-stage YC startup.
+- Leveraging AI and Claude Code to automate internal processes.
+
+### Engineering Intern at ECOM Chaco S.A. (Jun 2025 – Nov 2025)
+- Intense internship at a software agency, reporting to senior engineers.
+- Became a key contributor in platform engineering within two months, managing 100+ apps with tools like kubectl, Argo CD, Vault, Prometheus, and Grafana.
+- Migrated 50+ live services with thousands of users to Kubernetes.
+- Built workflows that enabled infrastructure self-service for 20+ developers.
+- Reduced deployment times from hours to minutes via CI/CD improvements and script automations.
+- Created a data pipeline with Python and SQL to gather metrics and prove team impact with data-driven insights.
+
+### Undergraduate Research Assistant at Universidad Tecnológica Nacional (Apr 2023 – Nov 2025)
+- Collaborated on three interdisciplinary research projects.
+- Helped develop a security control framework for IoT networks.
+- Co-authored and published two papers at national academic conferences.
+
+## Education
+- B.S. in Information Systems Engineering, Universidad Tecnológica Nacional (2021 – 2025) — Graduated with academic honors — 2nd highest GPA in cohort.
+- Certified Tech Developer, Digital House (2021 – 2022)
+
+## Projects
+### LLM Minigame (2026) — React, Python, OpenAI
+Airlock is a single-player social deduction game set on a space station. You must ask 5 questions to identify which of three AI crewmates is the traitor, each with a unique alibi and personality. Playground for experimenting with prompts, speech-to-text and text-to-speech.
+Play: https://airlock.agusbravo.dev
+
+### Kubernetes Homelab (2026) — Kubernetes, Argo CD, Cloudflare
+A k3s cluster self-hosts everything I ship under agusbravo.dev. Every app has Cloudflare for DNS and DDoS protection, cert-manager for TLS, and Argo CD GitOps for auto-deploys on every push. A simple install.sh spins up the entire setup.
+See the code: https://github.com/agustinbravop/homelab
+
+### Mobile App (2025) — React Native, TypeScript, Supabase
+Launched Elepad on the Google Play Store: a full-stack mobile app that connects families with their senior relatives. Built with Expo and Material UI. Final-year capstone project executed by a team of 5 top students, from product discovery to final delivery.
+Watch the demo: https://www.linkedin.com/posts/agustinbravop_softwareengineering-productdesign-ux-ugcPost-7458876019114995712-J40-/
+
+### Chrome Extension (2024) — JavaScript, Open Source
+Michiutilidades is an open-source browser extension for my university's website that gives students useful additional tools. Built in two days, now with 100+ weekly active users.
+Chrome Web Store: https://chromewebstore.google.com/detail/michiutilidades-sysacad-f/hgccklchbgcdkjdjpbhedjjlklpgfjnk
+
+### University Notes (2024) — Obsidian, Markdown, Documentation
+All my class notes from university are available to everyone on Mis Apuntes de ISI, a static website generated from an Obsidian wiki. It has helped dozens of students pass their exams.
+Visit: https://apuntes.agusbravo.dev
+
+## Stack
+TailwindCSS, React, TypeScript, Python, Go, SQL, Claude Code, PostgreSQL, AWS (SAA Certified), Docker, Kubernetes, Terraform, Linux
+
+## Links
+- LinkedIn: https://www.linkedin.com/in/agustinbravop
+- GitHub: https://github.com/agustinbravop
+- Twitter: https://www.x.com/agustinbravop
+- Email: mailto:agustinbravop1@gmail.com
