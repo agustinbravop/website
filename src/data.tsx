@@ -18,7 +18,7 @@ export const profile = {
     "From idea to production, from interface to infrastructure.",
     "Shipping fast and working closely with customers to build solutions they love.",
     "Chasing steep learning curves since forever: math olympiads, coding, and now AI.",
-    "Deeply into the future of startups, product design, and business strategy.",
+    "Deeply into the future of startups and product design.",
   ],
   siteUrl: "https://agusbravo.dev",
   resumeUrl: "/AgustinBravo_Resume.pdf",
@@ -74,7 +74,8 @@ export const experiences: {
         Joined as employee #8, working closely with founders to scale
         go-to-market efforts at an early-stage YC startup.
       </>,
-      <>Leveraging AI and Claude Code to automate internal processes.</>,
+      <>Leveraging AI and Claude Code to automate processes.</>,
+      <>Building deployments for customers.</>,
     ],
   },
   {

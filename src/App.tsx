@@ -1,6 +1,7 @@
 import HeroSection from "./components/HeroSection";
 import AboutSection from "./components/AboutSection";
-import ExperienceSection from "./components/ExperienceSection";
+import WorkSection from "./components/WorkSection";
+import EducationSection from "./components/EducationSection";
 import ProjectsSection from "./components/ProjectsSection";
 import StackSection from "./components/StackSection";
 import ContactSection from "./components/ContactSection";
@@ -10,8 +11,9 @@ function App() {
     <main className="max-w-160 mx-auto lg:ml-[25%] lg:mr-auto px-6 pt-12 sm:pt-20">
       <HeroSection />
       <AboutSection />
-      <ExperienceSection />
+      <WorkSection />
       <StackSection />
+      <EducationSection />
       <ProjectsSection />
       <ContactSection />
     </main>
