@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import AccentLink from "@/components/ui/accent-link";
+import resumePdfUrl from "@/assets/AgustinBravo_Resume.pdf";
 
 const em = (text: string) => (
   <span className="font-semibold text-primary">{text}</span>
@@ -21,7 +22,7 @@ export const profile = {
     "Deeply into the future of startups and product design.",
   ],
   siteUrl: "https://agusbravo.dev",
-  resumeUrl: "/AgustinBravo_Resume.pdf",
+  resumeUrl: resumePdfUrl,
 };
 
 export const links = [
@@ -65,19 +66,6 @@ export const experiences: {
   date: string;
   bullets: ReactNode[];
 }[] = [
-  {
-    title: "AI Deployment Specialist",
-    company: "Prox (YC F25)",
-    date: "Jun 2026 – Present",
-    bullets: [
-      <>
-        Joined as employee #8, working closely with founders to scale
-        go-to-market efforts at an early-stage YC startup.
-      </>,
-      <>Leveraging AI and Claude Code to automate processes.</>,
-      <>Building deployments for customers.</>,
-    ],
-  },
   {
     title: "Engineering Intern",
     company: "ECOM Chaco S.A.",

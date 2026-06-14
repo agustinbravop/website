@@ -1,13 +1,9 @@
 # Agustín Bravo
 > Full-Stack Software Engineer
 
-Full stack, full ownership. From idea to production, from interface to infrastructure. Shipping fast and working closely with customers to build solutions they love. Chasing steep learning curves since forever: math olympiads, coding, and now AI. Deeply into the future of startups, product design, and business strategy.
+Full stack, full ownership. From idea to production, from interface to infrastructure. Shipping fast and working closely with customers to build solutions they love. Chasing steep learning curves since forever: math olympiads, coding, and now AI. Deeply into the future of startups and product design.
 
 ## Experience
-### AI Deployment Specialist at Prox (YC F25) (Jun 2026 – Present)
-- Joined as employee #8, working closely with founders to scale go-to-market efforts at an early-stage YC startup.
-- Leveraging AI and Claude Code to automate internal processes.
-
 ### Engineering Intern at ECOM Chaco S.A. (Jun 2025 – Nov 2025)
 - Intense internship at a software agency, reporting to senior engineers.
 - Became a key contributor in platform engineering within two months, managing 100+ apps with tools like kubectl, Argo CD, Vault, Prometheus, and Grafana.
