@@ -121,7 +121,7 @@ export const educations: {
   {
     title: "B.S. in Information Systems Engineering",
     institution: "Universidad Tecnológica Nacional",
-    date: "2021 – 2025",
+    date: "2021 – 2026",
     note: "Graduated with academic honors — 2nd highest GPA in cohort.",
   },
   {
