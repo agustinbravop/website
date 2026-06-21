@@ -159,20 +159,22 @@ export const projects: {
   {
     title: "Kubernetes Homelab",
     year: "2026",
-    tags: ["Kubernetes", "Argo CD", "Cloudflare"],
+    tags: ["Kubernetes", "Terraform", "Cloudflare"],
     description: (
       <>
-        A k3s cluster self-hosts everything I ship under{" "}
+        I run everything under{" "}
         <AccentLink
           href="https://agusbravo.dev"
           variant="secondary"
           className="text-primary font-semibold"
         >
           agusbravo.dev
-        </AccentLink>
-        . Every app has Cloudflare for DNS and DDoS protection, cert-manager for
-        TLS, and Argo CD GitOps for auto-deploys on every push. A simple{" "}
-        {mono("install.sh")} spins up the entire setup.
+        </AccentLink>{" "}
+        on a k3s cluster self-hosted on a VPS. SSH access is secured
+        with Tailscale, Cloudflare handles DNS and DDoS protection, cert-manager
+        issues TLS certificates, and Argo CD powers GitOps deployments for every
+        app. A simple {mono("provision.sh")} with Terraform spins up the entire
+        setup.
       </>
     ),
     link: "https://github.com/agustinbravop/homelab",
