@@ -6,7 +6,7 @@ Full stack, full ownership. From idea to production, from interface to infrastru
 ## Experience
 ### Engineering Intern at ECOM Chaco S.A. (Jun 2025 – Nov 2025)
 - Intense internship at a software agency, reporting to senior engineers.
-- Became a key contributor in platform engineering within two months, managing 100+ apps with tools like kubectl, Argo CD, Vault, Prometheus, and Grafana.
+- Became a key contributor in platform engineering within three months, managing 100+ apps with tools like kubectl, Argo CD, Vault, Prometheus, and Grafana.
 - Migrated 50+ live services with thousands of users to Kubernetes.
 - Built workflows that enabled infrastructure self-service for 20+ developers.
 - Reduced deployment times from hours to minutes via CI/CD improvements and script automations.
@@ -18,7 +18,7 @@ Full stack, full ownership. From idea to production, from interface to infrastru
 - Co-authored and published two papers at national academic conferences.
 
 ## Education
-- B.S. in Information Systems Engineering, Universidad Tecnológica Nacional (2021 – 2025) — Graduated with academic honors — 2nd highest GPA in cohort.
+- B.S. in Information Systems Engineering, Universidad Tecnológica Nacional (2021 – 2026) — Graduated with academic honors — 2nd highest GPA in cohort.
 - Certified Tech Developer, Digital House (2021 – 2022)
 
 ## Projects
@@ -26,8 +26,8 @@ Full stack, full ownership. From idea to production, from interface to infrastru
 Airlock is a single-player social deduction game set on a space station. You must ask 5 questions to identify which of three AI crewmates is the traitor, each with a unique alibi and personality. Playground for experimenting with prompts, speech-to-text and text-to-speech.
 Play: https://airlock.agusbravo.dev
 
-### Kubernetes Homelab (2026) — Kubernetes, Argo CD, Cloudflare
-A k3s cluster self-hosts everything I ship under agusbravo.dev. Every app has Cloudflare for DNS and DDoS protection, cert-manager for TLS, and Argo CD GitOps for auto-deploys on every push. A simple install.sh spins up the entire setup.
+### Kubernetes Homelab (2026) — Kubernetes, Terraform, Cloudflare
+I run everything under agusbravo.dev on a k3s cluster self-hosted on a VPS. SSH access is secured with Tailscale, Cloudflare handles DNS and DDoS protection, cert-manager issues TLS certificates, and Argo CD powers GitOps deployments for every app. A simple provision.sh with Terraform spins up the entire setup.
 See the code: https://github.com/agustinbravop/homelab
 
 ### Mobile App (2025) — React Native, TypeScript, Supabase
@@ -43,7 +43,7 @@ All my class notes from university are available to everyone on Mis Apuntes de I
 Visit: https://apuntes.agusbravo.dev
 
 ## Stack
-TailwindCSS, React, TypeScript, Python, Go, SQL, Claude Code, PostgreSQL, AWS (SAA Certified), Docker, Kubernetes, Terraform, Linux
+TypeScript, React, Next.js, TailwindCSS, Python, Go, SQL, Claude Code, Docker, Kubernetes, Terraform, Linux, AWS (SAA Certified), Supabase
 
 ## Links
 - LinkedIn: https://www.linkedin.com/in/agustinbravop

@@ -49,14 +49,23 @@ export const links = [
 ];
 
 export const stack = [
-  ["TailwindCSS", "React", "TypeScript", "Python", "Go", "SQL", "Claude Code"],
   [
-    "PostgreSQL",
-    "AWS (SAA Certified)",
+    "TypeScript",
+    "React",
+    "Next.js",
+    "TailwindCSS",
+    "Claude Code",
+    "Python",
+    "Go",
+  ],
+  [
     "Docker",
     "Kubernetes",
     "Terraform",
     "Linux",
+    "AWS (SAA Certified)",
+    "SQL",
+    "Supabase",
   ],
 ];
 
@@ -76,7 +85,7 @@ export const experiences: {
       </>,
       <>
         Became a key contributor in platform engineering{" "}
-        {em("within two months")}, managing {em("100+")} apps with tools like
+        {em("within three months")}, managing {em("100+")} apps with tools like
         kubectl, Argo CD, Vault, Prometheus, and Grafana.
       </>,
       <>
@@ -170,8 +179,8 @@ export const projects: {
         >
           agusbravo.dev
         </AccentLink>{" "}
-        on a k3s cluster self-hosted on a VPS. SSH access is secured
-        with Tailscale, Cloudflare handles DNS and DDoS protection, cert-manager
+        on a k3s cluster self-hosted on a VPS. SSH access is secured with
+        Tailscale, Cloudflare handles DNS and DDoS protection, cert-manager
         issues TLS certificates, and Argo CD powers GitOps deployments for every
         app. A simple {mono("provision.sh")} with Terraform spins up the entire
         setup.
